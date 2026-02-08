@@ -44,7 +44,7 @@ export function AdapterSidebar() {
     <aside className="w-[220px] shrink-0 h-screen sticky top-0 flex flex-col border-r border-border/40 bg-card/60 backdrop-blur-xl">
       <div className="px-5 py-5 flex items-center gap-2.5 border-b border-border/30">
         <NexusLogo size={28} animated />
-        <span className="font-bold text-foreground text-sm tracking-tight">MCP Maker</span>
+        <span className="font-bold text-foreground text-sm tracking-tight">MYME</span>
       </div>
 
       <nav className="flex-1 px-3 py-4 space-y-0.5 overflow-y-auto">

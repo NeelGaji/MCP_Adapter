@@ -18,7 +18,7 @@ export function Footer() {
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="flex items-center gap-2.5 mb-4">
               <NexusLogo size={32} />
-              <span className="font-bold text-foreground">MCP Maker</span>
+              <span className="font-bold text-foreground">MYME</span>
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed">
               The orchestration layer for MCP servers. Generate, govern, deploy.
@@ -38,7 +38,7 @@ export function Footer() {
           ))}
         </div>
         <div className="mt-12 pt-6 border-t border-border/30 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
-          <span>&copy; 2026 MCP Maker. All rights reserved.</span>
+          <span>&copy; 2026 MYME. All rights reserved.</span>
           <div className="flex gap-6">
             <a href="#" className="hover:text-primary transition-colors">Privacy</a>
             <a href="#" className="hover:text-primary transition-colors">Terms</a>

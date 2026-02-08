@@ -4,7 +4,7 @@ import { ThemeProvider } from "next-themes";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "MCP Maker — Adapter Generator",
+  title: "MYME — Adapter Generator",
   description: "Generate MCP servers from any API specification",
 };
 

@@ -22,7 +22,7 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2.5 group">
           <NexusLogo size={36} animated />
-          <span className="font-bold text-foreground text-lg tracking-tight">MCP Maker</span>
+          <span className="font-bold text-foreground text-lg tracking-tight">MYME</span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
