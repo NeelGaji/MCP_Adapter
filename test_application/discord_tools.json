@@ -1,0 +1,624 @@
+{
+  "source": "https://raw.githubusercontent.com/discord/discord-api-spec/main/specs/openapi.json",
+  "parser": "gemini",
+  "api_info": {
+    "title": "Discord HTTP API (Preview)",
+    "version": "10",
+    "description": "Preview of the Discord v10 HTTP API specification. See https://discord.com/developers/docs for more details.",
+    "base_url": "https://discord.com/api/v10"
+  },
+  "tools": [
+    {
+      "name": "get_my_application",
+      "description": "Retrieves details of the current application.",
+      "method": "GET",
+      "path": "/applications/@me",
+      "params": []
+    },
+    {
+      "name": "update_my_application",
+      "description": "Updates details of the current application.",
+      "method": "PATCH",
+      "path": "/applications/@me",
+      "params": [
+        {
+          "name": "body",
+          "type": "object",
+          "required": true,
+          "location": "body",
+          "description": "Application form partial object to update the application."
+        }
+      ]
+    },
+    {
+      "name": "get_application",
+      "description": "Retrieves details for a specific application.",
+      "method": "GET",
+      "path": "/applications/{application_id}",
+      "params": [
+        {
+          "name": "application_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        }
+      ]
+    },
+    {
+      "name": "update_application",
+      "description": "Updates details for a specific application.",
+      "method": "PATCH",
+      "path": "/applications/{application_id}",
+      "params": [
+        {
+          "name": "application_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        },
+        {
+          "name": "body",
+          "type": "object",
+          "required": true,
+          "location": "body",
+          "description": "Application form partial object to update the application."
+        }
+      ]
+    },
+    {
+      "name": "applications_get_activity_instance",
+      "description": "Retrieves an activity instance for an application.",
+      "method": "GET",
+      "path": "/applications/{application_id}/activity-instances/{instance_id}",
+      "params": [
+        {
+          "name": "application_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        },
+        {
+          "name": "instance_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the activity instance."
+        }
+      ]
+    },
+    {
+      "name": "upload_application_attachment",
+      "description": "Uploads an attachment for an application.",
+      "method": "POST",
+      "path": "/applications/{application_id}/attachment",
+      "params": [
+        {
+          "name": "application_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        },
+        {
+          "name": "file",
+          "type": "string",
+          "required": true,
+          "location": "body",
+          "description": "The file to upload (binary content)."
+        }
+      ]
+    },
+    {
+      "name": "list_application_commands",
+      "description": "Lists global application commands.",
+      "method": "GET",
+      "path": "/applications/{application_id}/commands",
+      "params": [
+        {
+          "name": "application_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        },
+        {
+          "name": "with_localizations",
+          "type": "boolean",
+          "required": false,
+          "location": "query",
+          "description": "Whether to include localizations in the response."
+        }
+      ]
+    },
+    {
+      "name": "bulk_set_application_commands",
+      "description": "Bulk sets global application commands.",
+      "method": "PUT",
+      "path": "/applications/{application_id}/commands",
+      "params": [
+        {
+          "name": "application_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        },
+        {
+          "name": "commands",
+          "type": "array",
+          "required": true,
+          "location": "body",
+          "description": "An array of application command update requests."
+        }
+      ]
+    },
+    {
+      "name": "create_application_command",
+      "description": "Creates a new global application command.",
+      "method": "POST",
+      "path": "/applications/{application_id}/commands",
+      "params": [
+        {
+          "name": "application_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        },
+        {
+          "name": "body",
+          "type": "object",
+          "required": true,
+          "location": "body",
+          "description": "Application command creation request object."
+        }
+      ]
+    },
+    {
+      "name": "get_application_command",
+      "description": "Retrieves a specific global application command.",
+      "method": "GET",
+      "path": "/applications/{application_id}/commands/{command_id}",
+      "params": [
+        {
+          "name": "application_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        },
+        {
+          "name": "command_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the command."
+        }
+      ]
+    },
+    {
+      "name": "delete_application_command",
+      "description": "Deletes a specific global application command.",
+      "method": "DELETE",
+      "path": "/applications/{application_id}/commands/{command_id}",
+      "params": [
+        {
+          "name": "application_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        },
+        {
+          "name": "command_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the command."
+        }
+      ]
+    },
+    {
+      "name": "update_application_command",
+      "description": "Updates a specific global application command.",
+      "method": "PATCH",
+      "path": "/applications/{application_id}/commands/{command_id}",
+      "params": [
+        {
+          "name": "application_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        },
+        {
+          "name": "command_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the command."
+        },
+        {
+          "name": "body",
+          "type": "object",
+          "required": true,
+          "location": "body",
+          "description": "Application command patch request object."
+        }
+      ]
+    },
+    {
+      "name": "list_application_emojis",
+      "description": "Lists application emojis.",
+      "method": "GET",
+      "path": "/applications/{application_id}/emojis",
+      "params": [
+        {
+          "name": "application_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        }
+      ]
+    },
+    {
+      "name": "create_application_emoji",
+      "description": "Creates a new application emoji.",
+      "method": "POST",
+      "path": "/applications/{application_id}/emojis",
+      "params": [
+        {
+          "name": "application_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "location": "body",
+          "description": "The name of the emoji (2-32 characters)."
+        },
+        {
+          "name": "image",
+          "type": "string",
+          "required": true,
+          "location": "body",
+          "description": "The emoji image data encoded as a base64 string."
+        }
+      ]
+    },
+    {
+      "name": "get_application_emoji",
+      "description": "Retrieves a specific application emoji.",
+      "method": "GET",
+      "path": "/applications/{application_id}/emojis/{emoji_id}",
+      "params": [
+        {
+          "name": "application_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        },
+        {
+          "name": "emoji_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the emoji."
+        }
+      ]
+    },
+    {
+      "name": "delete_application_emoji",
+      "description": "Deletes a specific application emoji.",
+      "method": "DELETE",
+      "path": "/applications/{application_id}/emojis/{emoji_id}",
+      "params": [
+        {
+          "name": "application_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        },
+        {
+          "name": "emoji_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the emoji."
+        }
+      ]
+    },
+    {
+      "name": "update_application_emoji",
+      "description": "Updates a specific application emoji.",
+      "method": "PATCH",
+      "path": "/applications/{application_id}/emojis/{emoji_id}",
+      "params": [
+        {
+          "name": "application_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        },
+        {
+          "name": "emoji_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the emoji."
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": false,
+          "location": "body",
+          "description": "The new name for the emoji (2-32 characters)."
+        }
+      ]
+    },
+    {
+      "name": "get_entitlements",
+      "description": "Retrieves entitlements for an application.",
+      "method": "GET",
+      "path": "/applications/{application_id}/entitlements",
+      "params": [
+        {
+          "name": "application_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        },
+        {
+          "name": "user_id",
+          "type": "string",
+          "required": false,
+          "location": "query",
+          "description": "Filter entitlements by user ID."
+        },
+        {
+          "name": "sku_ids",
+          "type": "array",
+          "required": false,
+          "location": "query",
+          "description": "Filter entitlements by SKU ID(s). Can be a single SKU ID string or an array of SKU ID strings (max 100)."
+        },
+        {
+          "name": "guild_id",
+          "type": "string",
+          "required": false,
+          "location": "query",
+          "description": "Filter entitlements by guild ID."
+        },
+        {
+          "name": "before",
+          "type": "string",
+          "required": false,
+          "location": "query",
+          "description": "Get entitlements created before this ID."
+        },
+        {
+          "name": "after",
+          "type": "string",
+          "required": false,
+          "location": "query",
+          "description": "Get entitlements created after this ID."
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "location": "query",
+          "description": "The maximum number of entitlements to return (1-100)."
+        },
+        {
+          "name": "exclude_ended",
+          "type": "boolean",
+          "required": false,
+          "location": "query",
+          "description": "Exclude ended entitlements."
+        },
+        {
+          "name": "exclude_deleted",
+          "type": "boolean",
+          "required": false,
+          "location": "query",
+          "description": "Exclude deleted entitlements."
+        },
+        {
+          "name": "only_active",
+          "type": "boolean",
+          "required": false,
+          "location": "query",
+          "description": "Return only active entitlements."
+        }
+      ]
+    },
+    {
+      "name": "create_entitlement",
+      "description": "Creates a new entitlement for an application.",
+      "method": "POST",
+      "path": "/applications/{application_id}/entitlements",
+      "params": [
+        {
+          "name": "application_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        },
+        {
+          "name": "body",
+          "type": "object",
+          "required": true,
+          "location": "body",
+          "description": "Create entitlement request data."
+        }
+      ]
+    },
+    {
+      "name": "get_entitlement",
+      "description": "Retrieves a specific entitlement for an application.",
+      "method": "GET",
+      "path": "/applications/{application_id}/entitlements/{entitlement_id}",
+      "params": [
+        {
+          "name": "application_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        },
+        {
+          "name": "entitlement_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the entitlement."
+        }
+      ]
+    },
+    {
+      "name": "delete_entitlement",
+      "description": "Deletes a specific entitlement for an application.",
+      "method": "DELETE",
+      "path": "/applications/{application_id}/entitlements/{entitlement_id}",
+      "params": [
+        {
+          "name": "application_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        },
+        {
+          "name": "entitlement_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the entitlement."
+        }
+      ]
+    },
+    {
+      "name": "consume_entitlement",
+      "description": "Consumes a specific entitlement for an application.",
+      "method": "POST",
+      "path": "/applications/{application_id}/entitlements/{entitlement_id}/consume",
+      "params": [
+        {
+          "name": "application_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        },
+        {
+          "name": "entitlement_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the entitlement."
+        }
+      ]
+    },
+    {
+      "name": "list_guild_application_commands",
+      "description": "Lists guild application commands.",
+      "method": "GET",
+      "path": "/applications/{application_id}/guilds/{guild_id}/commands",
+      "params": [
+        {
+          "name": "application_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        },
+        {
+          "name": "guild_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the guild."
+        },
+        {
+          "name": "with_localizations",
+          "type": "boolean",
+          "required": false,
+          "location": "query",
+          "description": "Whether to include localizations in the response."
+        }
+      ]
+    },
+    {
+      "name": "bulk_set_guild_application_commands",
+      "description": "Bulk sets guild application commands.",
+      "method": "PUT",
+      "path": "/applications/{application_id}/guilds/{guild_id}/commands",
+      "params": [
+        {
+          "name": "application_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        },
+        {
+          "name": "guild_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the guild."
+        },
+        {
+          "name": "commands",
+          "type": "array",
+          "required": true,
+          "location": "body",
+          "description": "An array of application command update requests."
+        }
+      ]
+    },
+    {
+      "name": "create_guild_application_command",
+      "description": "Creates a new guild application command.",
+      "method": "POST",
+      "path": "/applications/{application_id}/guilds/{guild_id}/commands",
+      "params": [
+        {
+          "name": "application_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        },
+        {
+          "name": "guild_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the guild."
+        },
+        {
+          "name": "body",
+          "type": "object",
+          "required": true,
+          "location": "body",
+          "description": "Application command creation request object."
+        }
+      ]
+    }
+  ]
+}

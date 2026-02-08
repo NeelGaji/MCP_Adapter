@@ -1,0 +1,1307 @@
+{
+  "source": "https://raw.githubusercontent.com/digitalocean/openapi/main/specification/DigitalOcean-public.v2.yaml",
+  "policy": "moderate",
+  "summary": {
+    "total": 185,
+    "exposable": 135,
+    "blocked": 48,
+    "needs_review": 2
+  },
+  "classifications": [
+    {
+      "name": "one_clicks_list",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET operation, read-only.",
+      "confidence": 1.0
+    },
+    {
+      "name": "one_clicks_install_kubernetes",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "POST operation, a safe write (installation/creation) allowed by the moderate policy.",
+      "confidence": 0.9
+    },
+    {
+      "name": "account_get",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET operation, read-only. Accessing account information is allowed by the moderate policy for reads.",
+      "confidence": 1.0
+    },
+    {
+      "name": "ssh_keys_list",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET operation, read-only.",
+      "confidence": 1.0
+    },
+    {
+      "name": "ssh_keys_create",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "POST operation, a safe write (creation) allowed by the moderate policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "ssh_keys_get",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET operation, read-only.",
+      "confidence": 1.0
+    },
+    {
+      "name": "ssh_keys_update",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "PUT operation, a safe write (update) allowed by the moderate policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "ssh_keys_delete",
+      "classification": "unsafe",
+      "expose": false,
+      "reason": "DELETE operation, destructive, blocked by the moderate policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "actions_list",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET operation, read-only.",
+      "confidence": 1.0
+    },
+    {
+      "name": "actions_get",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET operation, read-only.",
+      "confidence": 1.0
+    },
+    {
+      "name": "addons_get_app",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET operation, read-only.",
+      "confidence": 1.0
+    },
+    {
+      "name": "addons_get_app_metadata",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET operation, read-only.",
+      "confidence": 1.0
+    },
+    {
+      "name": "addons_list",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET operation, read-only.",
+      "confidence": 1.0
+    },
+    {
+      "name": "addons_create",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "POST operation, a safe write (creation) allowed by the moderate policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "addons_get",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET operation, read-only.",
+      "confidence": 1.0
+    },
+    {
+      "name": "addons_delete",
+      "classification": "unsafe",
+      "expose": false,
+      "reason": "DELETE operation, destructive, blocked by the moderate policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "addons_update",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "PATCH operation, a safe write (update) allowed by the moderate policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "addons_update_plan",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "PATCH operation, a safe write (update) allowed by the moderate policy. Updating a plan is considered an update action.",
+      "confidence": 0.9
+    },
+    {
+      "name": "apps_list",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET operation, read-only.",
+      "confidence": 1.0
+    },
+    {
+      "name": "apps_create",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "POST operation, a safe write (creation) allowed by the moderate policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "apps_delete",
+      "classification": "unsafe",
+      "expose": false,
+      "reason": "DELETE operations are considered destructive and unsafe, blocked by the moderate policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "apps_get",
+      "classification": "safe",
+      "expose": true,
+      "reason": "This is a read-only operation (GET) with no side effects, making it safe to expose.",
+      "confidence": 1.0
+    },
+    {
+      "name": "apps_update",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "This is a write operation (PUT) for updating an application, which is allowed by the moderate policy as a safe write.",
+      "confidence": 1.0
+    },
+    {
+      "name": "apps_restart",
+      "classification": "conditional",
+      "expose": false,
+      "reason": "This is a write operation (POST) that involves restarting an application, a sensitive operational action that should be blocked under a moderate policy.",
+      "confidence": 0.9
+    },
+    {
+      "name": "apps_get_logs_active_deployment",
+      "classification": "safe",
+      "expose": true,
+      "reason": "This is a read-only operation (GET) to retrieve logs, with no side effects.",
+      "confidence": 1.0
+    },
+    {
+      "name": "apps_get_exec_active_deployment",
+      "classification": "safe",
+      "expose": true,
+      "reason": "This is a read-only operation (GET) to retrieve execution context, with no side effects.",
+      "confidence": 1.0
+    },
+    {
+      "name": "apps_get_instances",
+      "classification": "safe",
+      "expose": true,
+      "reason": "This is a read-only operation (GET) to retrieve instances, with no side effects.",
+      "confidence": 1.0
+    },
+    {
+      "name": "apps_list_deployments",
+      "classification": "safe",
+      "expose": true,
+      "reason": "This is a read-only operation (GET) to list deployments, with no side effects.",
+      "confidence": 1.0
+    },
+    {
+      "name": "apps_create_deployment",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "This is a write operation (POST) for creating a deployment, which is allowed by the moderate policy as a safe write.",
+      "confidence": 1.0
+    },
+    {
+      "name": "apps_get_deployment",
+      "classification": "safe",
+      "expose": true,
+      "reason": "This is a read-only operation (GET) to retrieve a deployment, with no side effects.",
+      "confidence": 1.0
+    },
+    {
+      "name": "apps_cancel_deployment",
+      "classification": "conditional",
+      "expose": false,
+      "reason": "This is a write operation (POST) that cancels a deployment, a sensitive operational action that should be blocked under a moderate policy.",
+      "confidence": 0.9
+    },
+    {
+      "name": "apps_get_logs",
+      "classification": "safe",
+      "expose": true,
+      "reason": "This is a read-only operation (GET) to retrieve logs, with no side effects.",
+      "confidence": 1.0
+    },
+    {
+      "name": "apps_get_logs_aggregate",
+      "classification": "safe",
+      "expose": true,
+      "reason": "This is a read-only operation (GET) to retrieve aggregate logs, with no side effects.",
+      "confidence": 1.0
+    },
+    {
+      "name": "apps_get_exec",
+      "classification": "safe",
+      "expose": true,
+      "reason": "This is a read-only operation (GET) to retrieve execution context, with no side effects.",
+      "confidence": 1.0
+    },
+    {
+      "name": "apps_get_logs_active_deployment_aggregate",
+      "classification": "safe",
+      "expose": true,
+      "reason": "This is a read-only operation (GET) to retrieve aggregate logs, with no side effects.",
+      "confidence": 1.0
+    },
+    {
+      "name": "apps_list_job_invocations",
+      "classification": "safe",
+      "expose": true,
+      "reason": "This is a read-only operation (GET) to list job invocations, with no side effects.",
+      "confidence": 1.0
+    },
+    {
+      "name": "apps_get_job_invocation",
+      "classification": "safe",
+      "expose": true,
+      "reason": "This is a read-only operation (GET) to retrieve a job invocation, with no side effects.",
+      "confidence": 1.0
+    },
+    {
+      "name": "apps_cancel_job_invocation",
+      "classification": "conditional",
+      "expose": false,
+      "reason": "This is a write operation (POST) that cancels a job invocation, a sensitive operational action that should be blocked under a moderate policy.",
+      "confidence": 0.9
+    },
+    {
+      "name": "apps_get_job_invocation_logs",
+      "classification": "safe",
+      "expose": true,
+      "reason": "This is a read-only operation (GET) to retrieve job invocation logs, with no side effects.",
+      "confidence": 1.0
+    },
+    {
+      "name": "apps_list_instance_sizes",
+      "classification": "safe",
+      "expose": true,
+      "reason": "This is a read-only operation (GET) to list instance sizes, with no side effects.",
+      "confidence": 1.0
+    },
+    {
+      "name": "apps_get_instance_size",
+      "classification": "safe",
+      "expose": true,
+      "reason": "Read-only operation to retrieve information.",
+      "confidence": 1.0
+    },
+    {
+      "name": "apps_list_regions",
+      "classification": "safe",
+      "expose": true,
+      "reason": "Read-only operation to list available regions.",
+      "confidence": 1.0
+    },
+    {
+      "name": "apps_validate_app_spec",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "Non-destructive write operation (validation) allowed by 'moderate' policy.",
+      "confidence": 0.9
+    },
+    {
+      "name": "apps_list_alerts",
+      "classification": "safe",
+      "expose": true,
+      "reason": "Read-only operation to list alerts.",
+      "confidence": 1.0
+    },
+    {
+      "name": "apps_assign_alert_destinations",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "Non-destructive write operation (assign/create) allowed by 'moderate' policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "apps_create_rollback",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "Non-destructive write operation (creating a rollback plan/snapshot) allowed by 'moderate' policy for safe writes.",
+      "confidence": 0.9
+    },
+    {
+      "name": "apps_validate_rollback",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "Non-destructive write operation (validation) allowed by 'moderate' policy.",
+      "confidence": 0.9
+    },
+    {
+      "name": "apps_commit_rollback",
+      "classification": "unsafe",
+      "expose": false,
+      "reason": "Highly sensitive operational change that can disrupt the application state. Blocked by 'moderate' policy.",
+      "confidence": 0.95
+    },
+    {
+      "name": "apps_revert_rollback",
+      "classification": "unsafe",
+      "expose": false,
+      "reason": "Highly sensitive operational change that can disrupt the application state. Blocked by 'moderate' policy.",
+      "confidence": 0.95
+    },
+    {
+      "name": "apps_get_metrics_bandwidth_usage",
+      "classification": "safe",
+      "expose": true,
+      "reason": "Read-only operation to retrieve metrics.",
+      "confidence": 1.0
+    },
+    {
+      "name": "apps_list_metrics_bandwidth_usage",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "Read-like operation (listing metrics) despite using POST, allowed by 'moderate' policy for reads.",
+      "confidence": 0.9
+    },
+    {
+      "name": "apps_get_health",
+      "classification": "safe",
+      "expose": true,
+      "reason": "Read-only operation to retrieve health status.",
+      "confidence": 1.0
+    },
+    {
+      "name": "cdn_list_endpoints",
+      "classification": "safe",
+      "expose": true,
+      "reason": "Read-only operation to list CDN endpoints.",
+      "confidence": 1.0
+    },
+    {
+      "name": "cdn_create_endpoint",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "Non-destructive write operation (creation) allowed by 'moderate' policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "cdn_get_endpoint",
+      "classification": "safe",
+      "expose": true,
+      "reason": "Read-only operation to retrieve CDN endpoint details.",
+      "confidence": 1.0
+    },
+    {
+      "name": "cdn_update_endpoint",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "Non-destructive write operation (update) allowed by 'moderate' policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "cdn_delete_endpoint",
+      "classification": "unsafe",
+      "expose": false,
+      "reason": "Destructive operation (deletion). Blocked by 'moderate' policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "cdn_purge_cache",
+      "classification": "unsafe",
+      "expose": false,
+      "reason": "Destructive operation (purging cache is equivalent to deleting cached data). Blocked by 'moderate' policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "certificates_list",
+      "classification": "safe",
+      "expose": true,
+      "reason": "Read-only operation to list certificates.",
+      "confidence": 1.0
+    },
+    {
+      "name": "certificates_create",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "Non-destructive write operation (creation) allowed by 'moderate' policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "certificates_get",
+      "classification": "unsafe",
+      "expose": false,
+      "reason": "Retrieves a security-sensitive SSL certificate, which is related to authentication infrastructure, thus classified as 'unsafe' and blocked by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "certificates_delete",
+      "classification": "unsafe",
+      "expose": false,
+      "reason": "Destructive operation (DELETE) and security-sensitive (SSL certificate), blocked by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "balance_get",
+      "classification": "unsafe",
+      "expose": false,
+      "reason": "Retrieves sensitive billing information (account balance), classified as 'unsafe' and blocked by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "billing_history_list",
+      "classification": "unsafe",
+      "expose": false,
+      "reason": "Retrieves sensitive billing information (billing history), classified as 'unsafe' and blocked by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "invoices_list",
+      "classification": "unsafe",
+      "expose": false,
+      "reason": "Retrieves sensitive billing information (invoices), classified as 'unsafe' and blocked by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "invoices_get_by_uuid",
+      "classification": "unsafe",
+      "expose": false,
+      "reason": "Retrieves sensitive billing information (invoice details), classified as 'unsafe' and blocked by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "invoices_get_csv_by_uuid",
+      "classification": "unsafe",
+      "expose": false,
+      "reason": "Retrieves sensitive billing information (invoice details), classified as 'unsafe' and blocked by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "invoices_get_pdf_by_uuid",
+      "classification": "unsafe",
+      "expose": false,
+      "reason": "Retrieves sensitive billing information (invoice details), classified as 'unsafe' and blocked by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "invoices_get_summary_by_uuid",
+      "classification": "unsafe",
+      "expose": false,
+      "reason": "Retrieves sensitive billing information (invoice summary), classified as 'unsafe' and blocked by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "billing_insights_list",
+      "classification": "unsafe",
+      "expose": false,
+      "reason": "Retrieves sensitive billing information (billing insights), classified as 'unsafe' and blocked by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_list_options",
+      "classification": "safe",
+      "expose": true,
+      "reason": "Read-only operation, not sensitive, allowed by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_list_clusters",
+      "classification": "safe",
+      "expose": true,
+      "reason": "Read-only operation, not sensitive, allowed by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_create_cluster",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "Safe write (create) operation, allowed by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_get_cluster",
+      "classification": "safe",
+      "expose": true,
+      "reason": "Read-only operation, not sensitive, allowed by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_destroy_cluster",
+      "classification": "unsafe",
+      "expose": false,
+      "reason": "Destructive operation (DELETE), blocked by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_get_config",
+      "classification": "safe",
+      "expose": true,
+      "reason": "Read-only operation, retrieves configuration which is not explicitly billing or authentication related, allowed by MODERATE policy.",
+      "confidence": 0.9
+    },
+    {
+      "name": "databases_patch_config",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "Safe write (update) operation, allowed by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_get_ca",
+      "classification": "unsafe",
+      "expose": false,
+      "reason": "Retrieves a security-sensitive CA certificate, which is directly related to authentication infrastructure, thus classified as 'unsafe' and blocked by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_get_migration_status",
+      "classification": "safe",
+      "expose": true,
+      "reason": "Read-only operation, not sensitive, allowed by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_update_online_migration",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "Safe write (update) operation, allowed by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_delete_online_migration",
+      "classification": "unsafe",
+      "expose": false,
+      "reason": "DELETE method, destructive operation, blocked by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_update_region",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "PUT method, safe write (update) operation, allowed by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_update_cluster_size",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "PUT method, safe write (update) operation, allowed by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_list_firewall_rules",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET method, read-only operation, always exposed.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_update_firewall_rules",
+      "classification": "conditional",
+      "expose": false,
+      "reason": "PUT method, security-sensitive operation (firewall rules), blocked by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_update_maintenance_window",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "PUT method, safe write (update) operation, allowed by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_update_install_update",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "PUT method, safe write (update) operation, allowed by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_list_backups",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET method, read-only operation, always exposed.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_list_replicas",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET method, read-only operation, always exposed.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_create_replica",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "POST method, safe write (create) operation, allowed by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_events_logs",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET method, read-only operation, always exposed.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_get_replica",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET method, read-only operation, always exposed.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_destroy_replica",
+      "classification": "unsafe",
+      "expose": false,
+      "reason": "DELETE method, destructive operation, blocked by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_promote_replica",
+      "classification": "conditional",
+      "expose": false,
+      "reason": "PUT method, highly security-sensitive/critical operational change, blocked by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_list_users",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET method, read-only operation, always exposed.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_add_user",
+      "classification": "conditional",
+      "expose": false,
+      "reason": "POST method, security-sensitive operation (user management/auth), blocked by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_get_user",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET method, read-only operation, always exposed.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_delete_user",
+      "classification": "unsafe",
+      "expose": false,
+      "reason": "DELETE method, destructive and security-sensitive operation (user management/auth), blocked by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_update_user",
+      "classification": "conditional",
+      "expose": false,
+      "reason": "PUT method, security-sensitive operation (user management/auth), blocked by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_reset_auth",
+      "classification": "unsafe",
+      "expose": false,
+      "reason": "POST method, highly security-sensitive operation (resetting authentication), blocked by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_list",
+      "classification": "safe",
+      "expose": true,
+      "reason": "Read-only operation, allowed by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_add",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "Safe write (create) operation, allowed by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_get",
+      "classification": "safe",
+      "expose": true,
+      "reason": "Read-only operation, allowed by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_delete",
+      "classification": "unsafe",
+      "expose": false,
+      "reason": "Destructive operation (delete), blocked by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_list_connection_pools",
+      "classification": "safe",
+      "expose": true,
+      "reason": "Read-only operation, allowed by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_add_connection_pool",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "Safe write (create) operation, allowed by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_get_connection_pool",
+      "classification": "safe",
+      "expose": true,
+      "reason": "Read-only operation, allowed by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_update_connection_pool",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "Safe write (update) operation, allowed by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_delete_connection_pool",
+      "classification": "unsafe",
+      "expose": false,
+      "reason": "Destructive operation (delete), blocked by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_get_eviction_policy",
+      "classification": "safe",
+      "expose": true,
+      "reason": "Read-only operation, allowed by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_update_eviction_policy",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "Safe write (update) operation, allowed by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_get_sql_mode",
+      "classification": "safe",
+      "expose": true,
+      "reason": "Read-only operation, allowed by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_update_sql_mode",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "Safe write (update) operation, allowed by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_upgrade_major_version",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "Write operation (upgrade/update), considered a safe write by MODERATE policy. Not destructive or security-sensitive like billing/auth.",
+      "confidence": 0.9
+    },
+    {
+      "name": "databases_get_autoscale",
+      "classification": "safe",
+      "expose": true,
+      "reason": "Read-only operation, allowed by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_update_autoscale",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "Safe write (update) operation, allowed by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_list_kafka_topics",
+      "classification": "safe",
+      "expose": true,
+      "reason": "Read-only operation, allowed by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_create_kafka_topic",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "Safe write (create) operation, allowed by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_get_kafka_topic",
+      "classification": "safe",
+      "expose": true,
+      "reason": "Read-only operation, allowed by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_update_kafka_topic",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "Safe write (update) operation, allowed by MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_delete_kafka_topic",
+      "classification": "unsafe",
+      "expose": false,
+      "reason": "DELETE method indicates a destructive operation, which is blocked by the MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_list_logsink",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET method indicates a read-only operation, which is allowed by the MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_create_logsink",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "POST method indicates a create operation (safe write), which is allowed by the MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_get_logsink",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET method indicates a read-only operation, which is allowed by the MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_update_logsink",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "PUT method indicates an update operation (safe write), which is allowed by the MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_delete_logsink",
+      "classification": "unsafe",
+      "expose": false,
+      "reason": "DELETE method indicates a destructive operation, which is blocked by the MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_list_kafka_schemas",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET method indicates a read-only operation, which is allowed by the MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_create_kafka_schema",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "POST method indicates a create operation (safe write), which is allowed by the MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_get_kafka_schema",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET method indicates a read-only operation, which is allowed by the MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_delete_kafka_schema",
+      "classification": "unsafe",
+      "expose": false,
+      "reason": "DELETE method indicates a destructive operation, which is blocked by the MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_get_kafka_schema_version",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET method indicates a read-only operation, which is allowed by the MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_get_kafka_schema_config",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET method indicates a read-only operation, which is allowed by the MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_update_kafka_schema_config",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "PUT method indicates an update operation (safe write), which is allowed by the MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_get_kafka_schema_subject_config",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET method indicates a read-only operation, which is allowed by the MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_update_kafka_schema_subject_config",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "PUT method indicates an update operation (safe write), which is allowed by the MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_get_cluster_metrics_credentials",
+      "classification": "unsafe",
+      "expose": false,
+      "reason": "Retrieving credentials is a security-sensitive operation ('auth'), classified as 'unsafe' and should never be exposed, regardless of the GET method.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_update_cluster_metrics_credentials",
+      "classification": "unsafe",
+      "expose": false,
+      "reason": "Updating credentials is a security-sensitive operation ('auth'), classified as 'unsafe' and should never be exposed, even if it's a write operation.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_list_opensearch_indexes",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET method indicates a read-only operation, which is allowed by the MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "databases_delete_opensearch_index",
+      "classification": "unsafe",
+      "expose": false,
+      "reason": "DELETE method indicates a destructive operation, which is blocked by the MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "domains_list",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET method indicates a read-only operation, which is allowed by the MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "domains_create",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "POST operation for creating a resource, allowed by the moderate policy for safe writes.",
+      "confidence": 1.0
+    },
+    {
+      "name": "domains_get",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET operation for reading a resource, always safe and allowed by the moderate policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "domains_delete",
+      "classification": "unsafe",
+      "expose": false,
+      "reason": "DELETE operation is destructive and explicitly blocked by the moderate policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "domains_list_records",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET operation for listing resources, always safe and allowed by the moderate policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "domains_create_record",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "POST operation for creating a resource, allowed by the moderate policy for safe writes.",
+      "confidence": 1.0
+    },
+    {
+      "name": "domains_get_record",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET operation for reading a resource, always safe and allowed by the moderate policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "domains_patch_record",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "PATCH operation for updating a resource, allowed by the moderate policy for safe writes.",
+      "confidence": 1.0
+    },
+    {
+      "name": "domains_update_record",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "PUT operation for updating a resource, allowed by the moderate policy for safe writes.",
+      "confidence": 1.0
+    },
+    {
+      "name": "domains_delete_record",
+      "classification": "unsafe",
+      "expose": false,
+      "reason": "DELETE operation is destructive and explicitly blocked by the moderate policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "droplets_list",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET operation for listing resources, always safe and allowed by the moderate policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "droplets_create",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "POST operation for creating a resource (Droplet), allowed by the moderate policy for safe writes (create).",
+      "confidence": 1.0
+    },
+    {
+      "name": "droplets_destroy_by_tag",
+      "classification": "unsafe",
+      "expose": false,
+      "reason": "DELETE operation is destructive and explicitly blocked by the moderate policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "droplets_get",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET operation for reading a resource, always safe and allowed by the moderate policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "droplets_destroy",
+      "classification": "unsafe",
+      "expose": false,
+      "reason": "DELETE operation is destructive and explicitly blocked by the moderate policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "droplets_list_backups",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET operation for listing resources, always safe and allowed by the moderate policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "droplets_get_backup_policy",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET operation for reading a resource, always safe and allowed by the moderate policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "droplets_list_backup_policies",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET operation for listing resources, always safe and allowed by the moderate policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "droplets_list_supported_backup_policies",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET operation for listing resources, always safe and allowed by the moderate policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "droplets_list_snapshots",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET operation for listing resources, always safe and allowed by the moderate policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "droplet_actions_list",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET operation for listing resources, always safe and allowed by the moderate policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "droplet_actions_post",
+      "classification": "conditional",
+      "expose": "review",
+      "reason": "POST operation for 'performing an action' on a Droplet. The description is too generic; some Droplet actions can be sensitive (e.g., rebuild, reset root password) or destructive, which are blocked by the MODERATE policy. Requires review to ensure only safe writes are permitted.",
+      "confidence": 0.8
+    },
+    {
+      "name": "droplet_actions_post_by_tag",
+      "classification": "conditional",
+      "expose": "review",
+      "reason": "POST operation for 'performing an action' on multiple Droplets by tag. The description is too generic; some Droplet actions can be sensitive or destructive, which are blocked by the MODERATE policy. Operating by tag increases the blast radius. Requires review to ensure only safe writes are permitted.",
+      "confidence": 0.8
+    },
+    {
+      "name": "droplet_actions_get",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET method is read-only, retrieving action details without side effects.",
+      "confidence": 1.0
+    },
+    {
+      "name": "droplets_list_kernels",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET method is read-only, listing available kernels without side effects.",
+      "confidence": 1.0
+    },
+    {
+      "name": "droplets_list_firewalls",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET method is read-only, listing firewalls without side effects.",
+      "confidence": 1.0
+    },
+    {
+      "name": "droplets_list_neighbors",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET method is read-only, listing neighboring Droplets without side effects.",
+      "confidence": 1.0
+    },
+    {
+      "name": "droplets_list_associated_resources",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET method is read-only, providing information about resources that *would be* destroyed, not performing destruction itself.",
+      "confidence": 1.0
+    },
+    {
+      "name": "droplets_destroy_with_associated_resources_selective",
+      "classification": "unsafe",
+      "expose": false,
+      "reason": "DELETE method clearly indicates a destructive operation, which is explicitly blocked by the MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "droplets_destroy_with_associated_resources_dangerous",
+      "classification": "unsafe",
+      "expose": false,
+      "reason": "DELETE method clearly indicates a destructive and explicitly 'dangerous' operation, which is explicitly blocked by the MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "droplets_get_destroy_associated_resources_status",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET method is read-only, retrieving the status of a destructive process without performing destructive actions.",
+      "confidence": 1.0
+    },
+    {
+      "name": "droplets_destroy_retry_with_associated_resources",
+      "classification": "unsafe",
+      "expose": false,
+      "reason": "POST method attempts to 'retry destroying' a Droplet. Although a POST, the intent is destructive, which is explicitly blocked by the MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "autoscale_pool_list",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET method is read-only, listing autoscale pools without side effects.",
+      "confidence": 1.0
+    },
+    {
+      "name": "autoscale_pool_create",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "POST method for 'create' operation, which is a 'safe write' allowed by the MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "autoscale_pool_get",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET method is read-only, retrieving a specific autoscale pool without side effects.",
+      "confidence": 1.0
+    },
+    {
+      "name": "autoscale_pool_update",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "PUT method for 'update' operation, which is a 'safe write' allowed by the MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "autoscale_pool_delete",
+      "classification": "unsafe",
+      "expose": false,
+      "reason": "DELETE method clearly indicates a destructive operation, which is explicitly blocked by the MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "autoscale_pool_delete_dangerous",
+      "classification": "unsafe",
+      "expose": false,
+      "reason": "DELETE method clearly indicates a destructive and explicitly 'dangerous' operation, which is explicitly blocked by the MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "autoscale_pool_list_members",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET method is read-only, listing members of an autoscale pool without side effects.",
+      "confidence": 1.0
+    },
+    {
+      "name": "autoscale_pool_list_history",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET method is read-only, listing history for an autoscale pool without side effects.",
+      "confidence": 1.0
+    },
+    {
+      "name": "firewalls_list",
+      "classification": "safe",
+      "expose": true,
+      "reason": "GET method is read-only, listing all cloud firewalls without side effects.",
+      "confidence": 1.0
+    },
+    {
+      "name": "firewalls_create",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "This is a creation operation (safe write) which is allowed under the MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "firewalls_get",
+      "classification": "safe",
+      "expose": true,
+      "reason": "This is a read-only operation (GET), which is always safe to expose and explicitly allowed by the MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "firewalls_update",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "This is an update operation (safe write) which is allowed under the MODERATE policy.",
+      "confidence": 1.0
+    },
+    {
+      "name": "firewalls_delete",
+      "classification": "unsafe",
+      "expose": false,
+      "reason": "This is a destructive delete operation, which is explicitly blocked by the MODERATE policy and categorized as 'unsafe'.",
+      "confidence": 1.0
+    },
+    {
+      "name": "firewalls_assign_droplets",
+      "classification": "conditional",
+      "expose": true,
+      "reason": "This is a write operation (POST) that modifies the state of a firewall by assigning droplets. This falls under 'safe writes' (like an update of a relationship/configuration) which are allowed under the MODERATE policy.",
+      "confidence": 0.9
+    }
+  ]
+}

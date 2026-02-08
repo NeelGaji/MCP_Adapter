@@ -63,7 +63,8 @@ def parse_with_prance(source: str) -> dict[str, Any]:
     print(f"[INFO] Parsing with Prance: {source}")
     
     try:
-        parser = ResolvingParser(source, strict=False)
+        # Increase recursion limit for large specs like Stripe
+        parser = ResolvingParser(source, strict=False, recursion_limit=100)
         spec = parser.specification
         
         # Extract API info

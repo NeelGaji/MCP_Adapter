@@ -1,0 +1,2804 @@
+{
+  "source": "https://raw.githubusercontent.com/digitalocean/openapi/main/specification/DigitalOcean-public.v2.yaml",
+  "parser": "gemini",
+  "api_info": {
+    "title": "DigitalOcean API",
+    "version": "2.0",
+    "description": "The DigitalOcean API allows programmatic access to manage DigitalOcean resources.",
+    "base_url": "https://api.digitalocean.com"
+  },
+  "tools": [
+    {
+      "name": "one_clicks_list",
+      "description": "List all available 1-Click applications.",
+      "method": "GET",
+      "path": "/v2/1-clicks",
+      "params": []
+    },
+    {
+      "name": "one_clicks_install_kubernetes",
+      "description": "Install a 1-Click Kubernetes application.",
+      "method": "POST",
+      "path": "/v2/1-clicks/kubernetes",
+      "params": []
+    },
+    {
+      "name": "account_get",
+      "description": "Retrieve information about the current account.",
+      "method": "GET",
+      "path": "/v2/account",
+      "params": []
+    },
+    {
+      "name": "ssh_keys_list",
+      "description": "List all SSH keys associated with the account.",
+      "method": "GET",
+      "path": "/v2/account/keys",
+      "params": []
+    },
+    {
+      "name": "ssh_keys_create",
+      "description": "Create a new SSH key.",
+      "method": "POST",
+      "path": "/v2/account/keys",
+      "params": []
+    },
+    {
+      "name": "ssh_keys_get",
+      "description": "Retrieve a specific SSH key by identifier.",
+      "method": "GET",
+      "path": "/v2/account/keys/{ssh_key_identifier}",
+      "params": [
+        {
+          "name": "ssh_key_identifier",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID or fingerprint of the SSH key."
+        }
+      ]
+    },
+    {
+      "name": "ssh_keys_update",
+      "description": "Update an existing SSH key.",
+      "method": "PUT",
+      "path": "/v2/account/keys/{ssh_key_identifier}",
+      "params": [
+        {
+          "name": "ssh_key_identifier",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID or fingerprint of the SSH key."
+        }
+      ]
+    },
+    {
+      "name": "ssh_keys_delete",
+      "description": "Delete an SSH key.",
+      "method": "DELETE",
+      "path": "/v2/account/keys/{ssh_key_identifier}",
+      "params": [
+        {
+          "name": "ssh_key_identifier",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID or fingerprint of the SSH key."
+        }
+      ]
+    },
+    {
+      "name": "actions_list",
+      "description": "List all actions performed on resources in the account.",
+      "method": "GET",
+      "path": "/v2/actions",
+      "params": []
+    },
+    {
+      "name": "actions_get",
+      "description": "Retrieve a specific action by ID.",
+      "method": "GET",
+      "path": "/v2/actions/{action_id}",
+      "params": [
+        {
+          "name": "action_id",
+          "type": "integer",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the action."
+        }
+      ]
+    },
+    {
+      "name": "addons_get_app",
+      "description": "Retrieve a specific add-on application.",
+      "method": "GET",
+      "path": "/v2/add-ons/apps",
+      "params": []
+    },
+    {
+      "name": "addons_get_app_metadata",
+      "description": "Retrieve metadata for a specific add-on application.",
+      "method": "GET",
+      "path": "/v2/add-ons/apps/{app_slug}/metadata",
+      "params": [
+        {
+          "name": "app_slug",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The slug of the add-on application."
+        }
+      ]
+    },
+    {
+      "name": "addons_list",
+      "description": "List all SaaS add-ons.",
+      "method": "GET",
+      "path": "/v2/add-ons/saas",
+      "params": []
+    },
+    {
+      "name": "addons_create",
+      "description": "Create a new SaaS add-on.",
+      "method": "POST",
+      "path": "/v2/add-ons/saas",
+      "params": []
+    },
+    {
+      "name": "addons_get",
+      "description": "Retrieve a specific SaaS add-on by UUID.",
+      "method": "GET",
+      "path": "/v2/add-ons/saas/{resource_uuid}",
+      "params": [
+        {
+          "name": "resource_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the add-on resource."
+        }
+      ]
+    },
+    {
+      "name": "addons_delete",
+      "description": "Delete a SaaS add-on.",
+      "method": "DELETE",
+      "path": "/v2/add-ons/saas/{resource_uuid}",
+      "params": [
+        {
+          "name": "resource_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the add-on resource."
+        }
+      ]
+    },
+    {
+      "name": "addons_update",
+      "description": "Update a SaaS add-on.",
+      "method": "PATCH",
+      "path": "/v2/add-ons/saas/{resource_uuid}",
+      "params": [
+        {
+          "name": "resource_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the add-on resource."
+        }
+      ]
+    },
+    {
+      "name": "addons_update_plan",
+      "description": "Update the plan for a SaaS add-on.",
+      "method": "PATCH",
+      "path": "/v2/add-ons/saas/{resource_uuid}/plan",
+      "params": [
+        {
+          "name": "resource_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the add-on resource."
+        }
+      ]
+    },
+    {
+      "name": "apps_list",
+      "description": "List all App Platform applications.",
+      "method": "GET",
+      "path": "/v2/apps",
+      "params": []
+    },
+    {
+      "name": "apps_create",
+      "description": "Create a new App Platform application.",
+      "method": "POST",
+      "path": "/v2/apps",
+      "params": []
+    },
+    {
+      "name": "apps_delete",
+      "description": "Delete an App Platform application.",
+      "method": "DELETE",
+      "path": "/v2/apps/{id}",
+      "params": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        }
+      ]
+    },
+    {
+      "name": "apps_get",
+      "description": "Retrieve a specific App Platform application by ID.",
+      "method": "GET",
+      "path": "/v2/apps/{id}",
+      "params": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        }
+      ]
+    },
+    {
+      "name": "apps_update",
+      "description": "Update an existing App Platform application.",
+      "method": "PUT",
+      "path": "/v2/apps/{id}",
+      "params": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        }
+      ]
+    },
+    {
+      "name": "apps_restart",
+      "description": "Restart an App Platform application.",
+      "method": "POST",
+      "path": "/v2/apps/{app_id}/restart",
+      "params": [
+        {
+          "name": "app_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        }
+      ]
+    },
+    {
+      "name": "apps_get_logs_active_deployment",
+      "description": "Retrieve logs for a component of the active deployment of an application.",
+      "method": "GET",
+      "path": "/v2/apps/{app_id}/components/{component_name}/logs",
+      "params": [
+        {
+          "name": "app_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        },
+        {
+          "name": "component_name",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The name of the component."
+        }
+      ]
+    },
+    {
+      "name": "apps_get_exec_active_deployment",
+      "description": "Get execution context for a component of the active deployment of an application.",
+      "method": "GET",
+      "path": "/v2/apps/{app_id}/components/{component_name}/exec",
+      "params": [
+        {
+          "name": "app_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        },
+        {
+          "name": "component_name",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The name of the component."
+        }
+      ]
+    },
+    {
+      "name": "apps_get_instances",
+      "description": "Retrieve instances for an App Platform application.",
+      "method": "GET",
+      "path": "/v2/apps/{app_id}/instances",
+      "params": [
+        {
+          "name": "app_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        }
+      ]
+    },
+    {
+      "name": "apps_list_deployments",
+      "description": "List all deployments for an App Platform application.",
+      "method": "GET",
+      "path": "/v2/apps/{app_id}/deployments",
+      "params": [
+        {
+          "name": "app_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        }
+      ]
+    },
+    {
+      "name": "apps_create_deployment",
+      "description": "Create a new deployment for an App Platform application.",
+      "method": "POST",
+      "path": "/v2/apps/{app_id}/deployments",
+      "params": [
+        {
+          "name": "app_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        }
+      ]
+    },
+    {
+      "name": "apps_get_deployment",
+      "description": "Retrieve a specific deployment for an App Platform application.",
+      "method": "GET",
+      "path": "/v2/apps/{app_id}/deployments/{deployment_id}",
+      "params": [
+        {
+          "name": "app_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        },
+        {
+          "name": "deployment_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the deployment."
+        }
+      ]
+    },
+    {
+      "name": "apps_cancel_deployment",
+      "description": "Cancel a deployment for an App Platform application.",
+      "method": "POST",
+      "path": "/v2/apps/{app_id}/deployments/{deployment_id}/cancel",
+      "params": [
+        {
+          "name": "app_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        },
+        {
+          "name": "deployment_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the deployment."
+        }
+      ]
+    },
+    {
+      "name": "apps_get_logs",
+      "description": "Retrieve logs for a component of a specific deployment.",
+      "method": "GET",
+      "path": "/v2/apps/{app_id}/deployments/{deployment_id}/components/{component_name}/logs",
+      "params": [
+        {
+          "name": "app_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        },
+        {
+          "name": "deployment_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the deployment."
+        },
+        {
+          "name": "component_name",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The name of the component."
+        }
+      ]
+    },
+    {
+      "name": "apps_get_logs_aggregate",
+      "description": "Retrieve aggregate logs for a specific deployment.",
+      "method": "GET",
+      "path": "/v2/apps/{app_id}/deployments/{deployment_id}/logs",
+      "params": [
+        {
+          "name": "app_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        },
+        {
+          "name": "deployment_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the deployment."
+        }
+      ]
+    },
+    {
+      "name": "apps_get_exec",
+      "description": "Get execution context for a component of a specific deployment.",
+      "method": "GET",
+      "path": "/v2/apps/{app_id}/deployments/{deployment_id}/components/{component_name}/exec",
+      "params": [
+        {
+          "name": "app_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        },
+        {
+          "name": "deployment_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the deployment."
+        },
+        {
+          "name": "component_name",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The name of the component."
+        }
+      ]
+    },
+    {
+      "name": "apps_get_logs_active_deployment_aggregate",
+      "description": "Retrieve aggregate logs for the active deployment of an application.",
+      "method": "GET",
+      "path": "/v2/apps/{app_id}/logs",
+      "params": [
+        {
+          "name": "app_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        }
+      ]
+    },
+    {
+      "name": "apps_list_job_invocations",
+      "description": "List job invocations for an App Platform application.",
+      "method": "GET",
+      "path": "/v2/apps/{app_id}/job-invocations",
+      "params": [
+        {
+          "name": "app_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        }
+      ]
+    },
+    {
+      "name": "apps_get_job_invocation",
+      "description": "Retrieve a specific job invocation for an App Platform application.",
+      "method": "GET",
+      "path": "/v2/apps/{app_id}/job-invocations/{job_invocation_id}",
+      "params": [
+        {
+          "name": "app_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        },
+        {
+          "name": "job_invocation_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the job invocation."
+        }
+      ]
+    },
+    {
+      "name": "apps_cancel_job_invocation",
+      "description": "Cancel a job invocation for an App Platform application.",
+      "method": "POST",
+      "path": "/v2/apps/{app_id}/job-invocations/{job_invocation_id}/cancel",
+      "params": [
+        {
+          "name": "app_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        },
+        {
+          "name": "job_invocation_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the job invocation."
+        }
+      ]
+    },
+    {
+      "name": "apps_get_job_invocation_logs",
+      "description": "Retrieve logs for a specific job invocation.",
+      "method": "GET",
+      "path": "/v2/apps/{app_id}/jobs/{job_name}/invocations/{job_invocation_id}/logs",
+      "params": [
+        {
+          "name": "app_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        },
+        {
+          "name": "job_name",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The name of the job."
+        },
+        {
+          "name": "job_invocation_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the job invocation."
+        }
+      ]
+    },
+    {
+      "name": "apps_list_instance_sizes",
+      "description": "List available App Platform instance sizes.",
+      "method": "GET",
+      "path": "/v2/apps/tiers/instance_sizes",
+      "params": []
+    },
+    {
+      "name": "apps_get_instance_size",
+      "description": "Retrieve details for a specific App Platform instance size.",
+      "method": "GET",
+      "path": "/v2/apps/tiers/instance_sizes/{slug}",
+      "params": [
+        {
+          "name": "slug",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The slug of the instance size."
+        }
+      ]
+    },
+    {
+      "name": "apps_list_regions",
+      "description": "List available App Platform regions.",
+      "method": "GET",
+      "path": "/v2/apps/regions",
+      "params": []
+    },
+    {
+      "name": "apps_validate_app_spec",
+      "description": "Validate an App Platform application specification.",
+      "method": "POST",
+      "path": "/v2/apps/propose",
+      "params": []
+    },
+    {
+      "name": "apps_list_alerts",
+      "description": "List alerts for an App Platform application.",
+      "method": "GET",
+      "path": "/v2/apps/{app_id}/alerts",
+      "params": [
+        {
+          "name": "app_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        }
+      ]
+    },
+    {
+      "name": "apps_assign_alert_destinations",
+      "description": "Assign alert destinations for an App Platform alert.",
+      "method": "POST",
+      "path": "/v2/apps/{app_id}/alerts/{alert_id}/destinations",
+      "params": [
+        {
+          "name": "app_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        },
+        {
+          "name": "alert_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the alert."
+        }
+      ]
+    },
+    {
+      "name": "apps_create_rollback",
+      "description": "Create a rollback for an App Platform application.",
+      "method": "POST",
+      "path": "/v2/apps/{app_id}/rollback",
+      "params": [
+        {
+          "name": "app_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        }
+      ]
+    },
+    {
+      "name": "apps_validate_rollback",
+      "description": "Validate a rollback for an App Platform application.",
+      "method": "POST",
+      "path": "/v2/apps/{app_id}/rollback/validate",
+      "params": [
+        {
+          "name": "app_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        }
+      ]
+    },
+    {
+      "name": "apps_commit_rollback",
+      "description": "Commit a rollback for an App Platform application.",
+      "method": "POST",
+      "path": "/v2/apps/{app_id}/rollback/commit",
+      "params": [
+        {
+          "name": "app_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        }
+      ]
+    },
+    {
+      "name": "apps_revert_rollback",
+      "description": "Revert a rollback for an App Platform application.",
+      "method": "POST",
+      "path": "/v2/apps/{app_id}/rollback/revert",
+      "params": [
+        {
+          "name": "app_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        }
+      ]
+    },
+    {
+      "name": "apps_get_metrics_bandwidth_usage",
+      "description": "Retrieve daily bandwidth usage metrics for an App Platform application.",
+      "method": "GET",
+      "path": "/v2/apps/{app_id}/metrics/bandwidth_daily",
+      "params": [
+        {
+          "name": "app_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        }
+      ]
+    },
+    {
+      "name": "apps_list_metrics_bandwidth_usage",
+      "description": "List daily bandwidth usage metrics for multiple App Platform applications.",
+      "method": "POST",
+      "path": "/v2/apps/metrics/bandwidth_daily",
+      "params": []
+    },
+    {
+      "name": "apps_get_health",
+      "description": "Retrieve the health status of an App Platform application.",
+      "method": "GET",
+      "path": "/v2/apps/{app_id}/health",
+      "params": [
+        {
+          "name": "app_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the application."
+        }
+      ]
+    },
+    {
+      "name": "cdn_list_endpoints",
+      "description": "List all CDN endpoints.",
+      "method": "GET",
+      "path": "/v2/cdn/endpoints",
+      "params": []
+    },
+    {
+      "name": "cdn_create_endpoint",
+      "description": "Create a new CDN endpoint.",
+      "method": "POST",
+      "path": "/v2/cdn/endpoints",
+      "params": []
+    },
+    {
+      "name": "cdn_get_endpoint",
+      "description": "Retrieve a specific CDN endpoint by ID.",
+      "method": "GET",
+      "path": "/v2/cdn/endpoints/{cdn_id}",
+      "params": [
+        {
+          "name": "cdn_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the CDN endpoint."
+        }
+      ]
+    },
+    {
+      "name": "cdn_update_endpoint",
+      "description": "Update an existing CDN endpoint.",
+      "method": "PUT",
+      "path": "/v2/cdn/endpoints/{cdn_id}",
+      "params": [
+        {
+          "name": "cdn_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the CDN endpoint."
+        }
+      ]
+    },
+    {
+      "name": "cdn_delete_endpoint",
+      "description": "Delete a CDN endpoint.",
+      "method": "DELETE",
+      "path": "/v2/cdn/endpoints/{cdn_id}",
+      "params": [
+        {
+          "name": "cdn_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the CDN endpoint."
+        }
+      ]
+    },
+    {
+      "name": "cdn_purge_cache",
+      "description": "Purge cached content for a CDN endpoint.",
+      "method": "DELETE",
+      "path": "/v2/cdn/endpoints/{cdn_id}/cache",
+      "params": [
+        {
+          "name": "cdn_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the CDN endpoint."
+        }
+      ]
+    },
+    {
+      "name": "certificates_list",
+      "description": "List all SSL certificates.",
+      "method": "GET",
+      "path": "/v2/certificates",
+      "params": []
+    },
+    {
+      "name": "certificates_create",
+      "description": "Create a new SSL certificate.",
+      "method": "POST",
+      "path": "/v2/certificates",
+      "params": []
+    },
+    {
+      "name": "certificates_get",
+      "description": "Retrieve a specific SSL certificate by ID.",
+      "method": "GET",
+      "path": "/v2/certificates/{certificate_id}",
+      "params": [
+        {
+          "name": "certificate_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the certificate."
+        }
+      ]
+    },
+    {
+      "name": "certificates_delete",
+      "description": "Delete an SSL certificate.",
+      "method": "DELETE",
+      "path": "/v2/certificates/{certificate_id}",
+      "params": [
+        {
+          "name": "certificate_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the certificate."
+        }
+      ]
+    },
+    {
+      "name": "balance_get",
+      "description": "Retrieve the account balance.",
+      "method": "GET",
+      "path": "/v2/customers/my/balance",
+      "params": []
+    },
+    {
+      "name": "billing_history_list",
+      "description": "List the billing history for the account.",
+      "method": "GET",
+      "path": "/v2/customers/my/billing_history",
+      "params": []
+    },
+    {
+      "name": "invoices_list",
+      "description": "List all invoices for the account.",
+      "method": "GET",
+      "path": "/v2/customers/my/invoices",
+      "params": []
+    },
+    {
+      "name": "invoices_get_by_uuid",
+      "description": "Retrieve a specific invoice by UUID.",
+      "method": "GET",
+      "path": "/v2/customers/my/invoices/{invoice_uuid}",
+      "params": [
+        {
+          "name": "invoice_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the invoice."
+        }
+      ]
+    },
+    {
+      "name": "invoices_get_csv_by_uuid",
+      "description": "Retrieve a specific invoice in CSV format by UUID.",
+      "method": "GET",
+      "path": "/v2/customers/my/invoices/{invoice_uuid}/csv",
+      "params": [
+        {
+          "name": "invoice_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the invoice."
+        }
+      ]
+    },
+    {
+      "name": "invoices_get_pdf_by_uuid",
+      "description": "Retrieve a specific invoice in PDF format by UUID.",
+      "method": "GET",
+      "path": "/v2/customers/my/invoices/{invoice_uuid}/pdf",
+      "params": [
+        {
+          "name": "invoice_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the invoice."
+        }
+      ]
+    },
+    {
+      "name": "invoices_get_summary_by_uuid",
+      "description": "Retrieve the summary for a specific invoice by UUID.",
+      "method": "GET",
+      "path": "/v2/customers/my/invoices/{invoice_uuid}/summary",
+      "params": [
+        {
+          "name": "invoice_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the invoice."
+        }
+      ]
+    },
+    {
+      "name": "billing_insights_list",
+      "description": "List billing insights for a specified date range.",
+      "method": "GET",
+      "path": "/v2/billing/{account_urn}/insights/{start_date}/{end_date}",
+      "params": [
+        {
+          "name": "account_urn",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The URN of the customer account (e.g., do:team:uuid or do:teamgroup:uuid)."
+        },
+        {
+          "name": "start_date",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The start date for the insights in YYYY-MM-DD format."
+        },
+        {
+          "name": "end_date",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The end date for the insights in YYYY-MM-DD format."
+        }
+      ]
+    },
+    {
+      "name": "databases_list_options",
+      "description": "List available database options and slugs.",
+      "method": "GET",
+      "path": "/v2/databases/options",
+      "params": []
+    },
+    {
+      "name": "databases_list_clusters",
+      "description": "List all database clusters.",
+      "method": "GET",
+      "path": "/v2/databases",
+      "params": []
+    },
+    {
+      "name": "databases_create_cluster",
+      "description": "Create a new database cluster.",
+      "method": "POST",
+      "path": "/v2/databases",
+      "params": []
+    },
+    {
+      "name": "databases_get_cluster",
+      "description": "Retrieve a specific database cluster by UUID.",
+      "method": "GET",
+      "path": "/v2/databases/{database_cluster_uuid}",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        }
+      ]
+    },
+    {
+      "name": "databases_destroy_cluster",
+      "description": "Delete a database cluster.",
+      "method": "DELETE",
+      "path": "/v2/databases/{database_cluster_uuid}",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        }
+      ]
+    },
+    {
+      "name": "databases_get_config",
+      "description": "Retrieve the configuration for a database cluster.",
+      "method": "GET",
+      "path": "/v2/databases/{database_cluster_uuid}/config",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        }
+      ]
+    },
+    {
+      "name": "databases_patch_config",
+      "description": "Patch the configuration for a database cluster.",
+      "method": "PATCH",
+      "path": "/v2/databases/{database_cluster_uuid}/config",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        }
+      ]
+    },
+    {
+      "name": "databases_get_ca",
+      "description": "Retrieve the CA certificate for a database cluster.",
+      "method": "GET",
+      "path": "/v2/databases/{database_cluster_uuid}/ca",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        }
+      ]
+    },
+    {
+      "name": "databases_get_migration_status",
+      "description": "Retrieve the online migration status for a database cluster.",
+      "method": "GET",
+      "path": "/v2/databases/{database_cluster_uuid}/online-migration",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        }
+      ]
+    },
+    {
+      "name": "databases_update_online_migration",
+      "description": "Update the online migration for a database cluster.",
+      "method": "PUT",
+      "path": "/v2/databases/{database_cluster_uuid}/online-migration",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        }
+      ]
+    },
+    {
+      "name": "databases_delete_online_migration",
+      "description": "Delete an online migration for a database cluster.",
+      "method": "DELETE",
+      "path": "/v2/databases/{database_cluster_uuid}/online-migration/{migration_id}",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        },
+        {
+          "name": "migration_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the online migration."
+        }
+      ]
+    },
+    {
+      "name": "databases_update_region",
+      "description": "Migrate a database cluster to a new region.",
+      "method": "PUT",
+      "path": "/v2/databases/{database_cluster_uuid}/migrate",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        }
+      ]
+    },
+    {
+      "name": "databases_update_cluster_size",
+      "description": "Resize a database cluster.",
+      "method": "PUT",
+      "path": "/v2/databases/{database_cluster_uuid}/resize",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        }
+      ]
+    },
+    {
+      "name": "databases_list_firewall_rules",
+      "description": "List firewall rules for a database cluster.",
+      "method": "GET",
+      "path": "/v2/databases/{database_cluster_uuid}/firewall",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        }
+      ]
+    },
+    {
+      "name": "databases_update_firewall_rules",
+      "description": "Update firewall rules for a database cluster.",
+      "method": "PUT",
+      "path": "/v2/databases/{database_cluster_uuid}/firewall",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        }
+      ]
+    },
+    {
+      "name": "databases_update_maintenance_window",
+      "description": "Update the maintenance window for a database cluster.",
+      "method": "PUT",
+      "path": "/v2/databases/{database_cluster_uuid}/maintenance",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        }
+      ]
+    },
+    {
+      "name": "databases_update_install_update",
+      "description": "Install updates for a database cluster.",
+      "method": "PUT",
+      "path": "/v2/databases/{database_cluster_uuid}/install_update",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        }
+      ]
+    },
+    {
+      "name": "databases_list_backups",
+      "description": "List backups for a database cluster.",
+      "method": "GET",
+      "path": "/v2/databases/{database_cluster_uuid}/backups",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        }
+      ]
+    },
+    {
+      "name": "databases_list_replicas",
+      "description": "List read-only replicas for a database cluster.",
+      "method": "GET",
+      "path": "/v2/databases/{database_cluster_uuid}/replicas",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        }
+      ]
+    },
+    {
+      "name": "databases_create_replica",
+      "description": "Create a new read-only replica for a database cluster.",
+      "method": "POST",
+      "path": "/v2/databases/{database_cluster_uuid}/replicas",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        }
+      ]
+    },
+    {
+      "name": "databases_events_logs",
+      "description": "Retrieve event logs for a database cluster.",
+      "method": "GET",
+      "path": "/v2/databases/{database_cluster_uuid}/events",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        }
+      ]
+    },
+    {
+      "name": "databases_get_replica",
+      "description": "Retrieve a specific read-only replica by name.",
+      "method": "GET",
+      "path": "/v2/databases/{database_cluster_uuid}/replicas/{replica_name}",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        },
+        {
+          "name": "replica_name",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The name of the replica."
+        }
+      ]
+    },
+    {
+      "name": "databases_destroy_replica",
+      "description": "Delete a read-only replica.",
+      "method": "DELETE",
+      "path": "/v2/databases/{database_cluster_uuid}/replicas/{replica_name}",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        },
+        {
+          "name": "replica_name",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The name of the replica."
+        }
+      ]
+    },
+    {
+      "name": "databases_promote_replica",
+      "description": "Promote a read-only replica to a primary node.",
+      "method": "PUT",
+      "path": "/v2/databases/{database_cluster_uuid}/replicas/{replica_name}/promote",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        },
+        {
+          "name": "replica_name",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The name of the replica."
+        }
+      ]
+    },
+    {
+      "name": "databases_list_users",
+      "description": "List users for a database cluster.",
+      "method": "GET",
+      "path": "/v2/databases/{database_cluster_uuid}/users",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        }
+      ]
+    },
+    {
+      "name": "databases_add_user",
+      "description": "Add a new user to a database cluster.",
+      "method": "POST",
+      "path": "/v2/databases/{database_cluster_uuid}/users",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        }
+      ]
+    },
+    {
+      "name": "databases_get_user",
+      "description": "Retrieve a specific user for a database cluster by username.",
+      "method": "GET",
+      "path": "/v2/databases/{database_cluster_uuid}/users/{username}",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        },
+        {
+          "name": "username",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The username of the database user."
+        }
+      ]
+    },
+    {
+      "name": "databases_delete_user",
+      "description": "Delete a user from a database cluster.",
+      "method": "DELETE",
+      "path": "/v2/databases/{database_cluster_uuid}/users/{username}",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        },
+        {
+          "name": "username",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The username of the database user."
+        }
+      ]
+    },
+    {
+      "name": "databases_update_user",
+      "description": "Update a user in a database cluster.",
+      "method": "PUT",
+      "path": "/v2/databases/{database_cluster_uuid}/users/{username}",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        },
+        {
+          "name": "username",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The username of the database user."
+        }
+      ]
+    },
+    {
+      "name": "databases_reset_auth",
+      "description": "Reset authentication for a user in a database cluster.",
+      "method": "POST",
+      "path": "/v2/databases/{database_cluster_uuid}/users/{username}/reset_auth",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        },
+        {
+          "name": "username",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The username of the database user."
+        }
+      ]
+    },
+    {
+      "name": "databases_list",
+      "description": "List all databases within a database cluster.",
+      "method": "GET",
+      "path": "/v2/databases/{database_cluster_uuid}/dbs",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        }
+      ]
+    },
+    {
+      "name": "databases_add",
+      "description": "Add a new database to a database cluster.",
+      "method": "POST",
+      "path": "/v2/databases/{database_cluster_uuid}/dbs",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        }
+      ]
+    },
+    {
+      "name": "databases_get",
+      "description": "Retrieve a specific database by name within a database cluster.",
+      "method": "GET",
+      "path": "/v2/databases/{database_cluster_uuid}/dbs/{database_name}",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        },
+        {
+          "name": "database_name",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The name of the database."
+        }
+      ]
+    },
+    {
+      "name": "databases_delete",
+      "description": "Delete a database from a database cluster.",
+      "method": "DELETE",
+      "path": "/v2/databases/{database_cluster_uuid}/dbs/{database_name}",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        },
+        {
+          "name": "database_name",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The name of the database."
+        }
+      ]
+    },
+    {
+      "name": "databases_list_connection_pools",
+      "description": "List connection pools for a database cluster.",
+      "method": "GET",
+      "path": "/v2/databases/{database_cluster_uuid}/pools",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        }
+      ]
+    },
+    {
+      "name": "databases_add_connection_pool",
+      "description": "Add a new connection pool to a database cluster.",
+      "method": "POST",
+      "path": "/v2/databases/{database_cluster_uuid}/pools",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        }
+      ]
+    },
+    {
+      "name": "databases_get_connection_pool",
+      "description": "Retrieve a specific connection pool by name for a database cluster.",
+      "method": "GET",
+      "path": "/v2/databases/{database_cluster_uuid}/pools/{pool_name}",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        },
+        {
+          "name": "pool_name",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The name of the connection pool."
+        }
+      ]
+    },
+    {
+      "name": "databases_update_connection_pool",
+      "description": "Update a connection pool in a database cluster.",
+      "method": "PUT",
+      "path": "/v2/databases/{database_cluster_uuid}/pools/{pool_name}",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        },
+        {
+          "name": "pool_name",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The name of the connection pool."
+        }
+      ]
+    },
+    {
+      "name": "databases_delete_connection_pool",
+      "description": "Delete a connection pool from a database cluster.",
+      "method": "DELETE",
+      "path": "/v2/databases/{database_cluster_uuid}/pools/{pool_name}",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        },
+        {
+          "name": "pool_name",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The name of the connection pool."
+        }
+      ]
+    },
+    {
+      "name": "databases_get_eviction_policy",
+      "description": "Retrieve the eviction policy for a database cluster.",
+      "method": "GET",
+      "path": "/v2/databases/{database_cluster_uuid}/eviction_policy",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        }
+      ]
+    },
+    {
+      "name": "databases_update_eviction_policy",
+      "description": "Update the eviction policy for a database cluster.",
+      "method": "PUT",
+      "path": "/v2/databases/{database_cluster_uuid}/eviction_policy",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        }
+      ]
+    },
+    {
+      "name": "databases_get_sql_mode",
+      "description": "Retrieve the SQL mode for a database cluster.",
+      "method": "GET",
+      "path": "/v2/databases/{database_cluster_uuid}/sql_mode",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        }
+      ]
+    },
+    {
+      "name": "databases_update_sql_mode",
+      "description": "Update the SQL mode for a database cluster.",
+      "method": "PUT",
+      "path": "/v2/databases/{database_cluster_uuid}/sql_mode",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        }
+      ]
+    },
+    {
+      "name": "databases_upgrade_major_version",
+      "description": "Upgrade the major version of a database cluster.",
+      "method": "PUT",
+      "path": "/v2/databases/{database_cluster_uuid}/upgrade",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        }
+      ]
+    },
+    {
+      "name": "databases_get_autoscale",
+      "description": "Retrieve autoscale settings for a database cluster.",
+      "method": "GET",
+      "path": "/v2/databases/{database_cluster_uuid}/autoscale",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        }
+      ]
+    },
+    {
+      "name": "databases_update_autoscale",
+      "description": "Update autoscale settings for a database cluster.",
+      "method": "PUT",
+      "path": "/v2/databases/{database_cluster_uuid}/autoscale",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        }
+      ]
+    },
+    {
+      "name": "databases_list_kafka_topics",
+      "description": "List Kafka topics for a database cluster.",
+      "method": "GET",
+      "path": "/v2/databases/{database_cluster_uuid}/topics",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        }
+      ]
+    },
+    {
+      "name": "databases_create_kafka_topic",
+      "description": "Create a new Kafka topic for a database cluster.",
+      "method": "POST",
+      "path": "/v2/databases/{database_cluster_uuid}/topics",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        }
+      ]
+    },
+    {
+      "name": "databases_get_kafka_topic",
+      "description": "Retrieve a specific Kafka topic for a database cluster.",
+      "method": "GET",
+      "path": "/v2/databases/{database_cluster_uuid}/topics/{topic_name}",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        },
+        {
+          "name": "topic_name",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The name of the Kafka topic."
+        }
+      ]
+    },
+    {
+      "name": "databases_update_kafka_topic",
+      "description": "Update a Kafka topic for a database cluster.",
+      "method": "PUT",
+      "path": "/v2/databases/{database_cluster_uuid}/topics/{topic_name}",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        },
+        {
+          "name": "topic_name",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The name of the Kafka topic."
+        }
+      ]
+    },
+    {
+      "name": "databases_delete_kafka_topic",
+      "description": "Delete a Kafka topic from a database cluster.",
+      "method": "DELETE",
+      "path": "/v2/databases/{database_cluster_uuid}/topics/{topic_name}",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        },
+        {
+          "name": "topic_name",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The name of the Kafka topic."
+        }
+      ]
+    },
+    {
+      "name": "databases_list_logsink",
+      "description": "List logsinks for a database cluster.",
+      "method": "GET",
+      "path": "/v2/databases/{database_cluster_uuid}/logsink",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        }
+      ]
+    },
+    {
+      "name": "databases_create_logsink",
+      "description": "Create a new logsink for a database cluster.",
+      "method": "POST",
+      "path": "/v2/databases/{database_cluster_uuid}/logsink",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        }
+      ]
+    },
+    {
+      "name": "databases_get_logsink",
+      "description": "Retrieve a specific logsink for a database cluster.",
+      "method": "GET",
+      "path": "/v2/databases/{database_cluster_uuid}/logsink/{logsink_id}",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        },
+        {
+          "name": "logsink_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the logsink."
+        }
+      ]
+    },
+    {
+      "name": "databases_update_logsink",
+      "description": "Update a logsink for a database cluster.",
+      "method": "PUT",
+      "path": "/v2/databases/{database_cluster_uuid}/logsink/{logsink_id}",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        },
+        {
+          "name": "logsink_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the logsink."
+        }
+      ]
+    },
+    {
+      "name": "databases_delete_logsink",
+      "description": "Delete a logsink from a database cluster.",
+      "method": "DELETE",
+      "path": "/v2/databases/{database_cluster_uuid}/logsink/{logsink_id}",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        },
+        {
+          "name": "logsink_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the logsink."
+        }
+      ]
+    },
+    {
+      "name": "databases_list_kafka_schemas",
+      "description": "List Kafka schemas for a database cluster.",
+      "method": "GET",
+      "path": "/v2/databases/{database_cluster_uuid}/schema-registry",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        }
+      ]
+    },
+    {
+      "name": "databases_create_kafka_schema",
+      "description": "Create a new Kafka schema for a database cluster.",
+      "method": "POST",
+      "path": "/v2/databases/{database_cluster_uuid}/schema-registry",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        }
+      ]
+    },
+    {
+      "name": "databases_get_kafka_schema",
+      "description": "Retrieve a specific Kafka schema by subject name for a database cluster.",
+      "method": "GET",
+      "path": "/v2/databases/{database_cluster_uuid}/schema-registry/{subject_name}",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        },
+        {
+          "name": "subject_name",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The subject name of the Kafka schema."
+        }
+      ]
+    },
+    {
+      "name": "databases_delete_kafka_schema",
+      "description": "Delete a Kafka schema by subject name from a database cluster.",
+      "method": "DELETE",
+      "path": "/v2/databases/{database_cluster_uuid}/schema-registry/{subject_name}",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        },
+        {
+          "name": "subject_name",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The subject name of the Kafka schema."
+        }
+      ]
+    },
+    {
+      "name": "databases_get_kafka_schema_version",
+      "description": "Retrieve a specific version of a Kafka schema by subject name for a database cluster.",
+      "method": "GET",
+      "path": "/v2/databases/{database_cluster_uuid}/schema-registry/{subject_name}/versions/{version}",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        },
+        {
+          "name": "subject_name",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The subject name of the Kafka schema."
+        },
+        {
+          "name": "version",
+          "type": "integer",
+          "required": true,
+          "location": "path",
+          "description": "The version of the Kafka schema."
+        }
+      ]
+    },
+    {
+      "name": "databases_get_kafka_schema_config",
+      "description": "Retrieve the Kafka schema registry configuration for a database cluster.",
+      "method": "GET",
+      "path": "/v2/databases/{database_cluster_uuid}/schema-registry/config",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        }
+      ]
+    },
+    {
+      "name": "databases_update_kafka_schema_config",
+      "description": "Update the Kafka schema registry configuration for a database cluster.",
+      "method": "PUT",
+      "path": "/v2/databases/{database_cluster_uuid}/schema-registry/config",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        }
+      ]
+    },
+    {
+      "name": "databases_get_kafka_schema_subject_config",
+      "description": "Retrieve the Kafka schema registry configuration for a specific subject.",
+      "method": "GET",
+      "path": "/v2/databases/{database_cluster_uuid}/schema-registry/config/{subject_name}",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        },
+        {
+          "name": "subject_name",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The subject name of the Kafka schema."
+        }
+      ]
+    },
+    {
+      "name": "databases_update_kafka_schema_subject_config",
+      "description": "Update the Kafka schema registry configuration for a specific subject.",
+      "method": "PUT",
+      "path": "/v2/databases/{database_cluster_uuid}/schema-registry/config/{subject_name}",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        },
+        {
+          "name": "subject_name",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The subject name of the Kafka schema."
+        }
+      ]
+    },
+    {
+      "name": "databases_get_cluster_metrics_credentials",
+      "description": "Retrieve cluster metrics credentials for a database.",
+      "method": "GET",
+      "path": "/v2/databases/metrics/credentials",
+      "params": []
+    },
+    {
+      "name": "databases_update_cluster_metrics_credentials",
+      "description": "Update cluster metrics credentials for a database.",
+      "method": "PUT",
+      "path": "/v2/databases/metrics/credentials",
+      "params": []
+    },
+    {
+      "name": "databases_list_opensearch_indexes",
+      "description": "List OpenSearch indexes for a database cluster.",
+      "method": "GET",
+      "path": "/v2/databases/{database_cluster_uuid}/indexes",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        }
+      ]
+    },
+    {
+      "name": "databases_delete_opensearch_index",
+      "description": "Delete an OpenSearch index from a database cluster.",
+      "method": "DELETE",
+      "path": "/v2/databases/{database_cluster_uuid}/indexes/{index_name}",
+      "params": [
+        {
+          "name": "database_cluster_uuid",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The UUID of the database cluster."
+        },
+        {
+          "name": "index_name",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The name of the OpenSearch index."
+        }
+      ]
+    },
+    {
+      "name": "domains_list",
+      "description": "List all domains managed through DigitalOcean DNS.",
+      "method": "GET",
+      "path": "/v2/domains",
+      "params": []
+    },
+    {
+      "name": "domains_create",
+      "description": "Create a new domain.",
+      "method": "POST",
+      "path": "/v2/domains",
+      "params": []
+    },
+    {
+      "name": "domains_get",
+      "description": "Retrieve a specific domain by name.",
+      "method": "GET",
+      "path": "/v2/domains/{domain_name}",
+      "params": [
+        {
+          "name": "domain_name",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The name of the domain."
+        }
+      ]
+    },
+    {
+      "name": "domains_delete",
+      "description": "Delete a domain.",
+      "method": "DELETE",
+      "path": "/v2/domains/{domain_name}",
+      "params": [
+        {
+          "name": "domain_name",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The name of the domain."
+        }
+      ]
+    },
+    {
+      "name": "domains_list_records",
+      "description": "List all domain records for a specific domain.",
+      "method": "GET",
+      "path": "/v2/domains/{domain_name}/records",
+      "params": [
+        {
+          "name": "domain_name",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The name of the domain."
+        }
+      ]
+    },
+    {
+      "name": "domains_create_record",
+      "description": "Create a new domain record for a domain.",
+      "method": "POST",
+      "path": "/v2/domains/{domain_name}/records",
+      "params": [
+        {
+          "name": "domain_name",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The name of the domain."
+        }
+      ]
+    },
+    {
+      "name": "domains_get_record",
+      "description": "Retrieve a specific domain record by ID for a domain.",
+      "method": "GET",
+      "path": "/v2/domains/{domain_name}/records/{domain_record_id}",
+      "params": [
+        {
+          "name": "domain_name",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The name of the domain."
+        },
+        {
+          "name": "domain_record_id",
+          "type": "integer",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the domain record."
+        }
+      ]
+    },
+    {
+      "name": "domains_patch_record",
+      "description": "Partially update an existing domain record for a domain.",
+      "method": "PATCH",
+      "path": "/v2/domains/{domain_name}/records/{domain_record_id}",
+      "params": [
+        {
+          "name": "domain_name",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The name of the domain."
+        },
+        {
+          "name": "domain_record_id",
+          "type": "integer",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the domain record."
+        }
+      ]
+    },
+    {
+      "name": "domains_update_record",
+      "description": "Update an existing domain record for a domain.",
+      "method": "PUT",
+      "path": "/v2/domains/{domain_name}/records/{domain_record_id}",
+      "params": [
+        {
+          "name": "domain_name",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The name of the domain."
+        },
+        {
+          "name": "domain_record_id",
+          "type": "integer",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the domain record."
+        }
+      ]
+    },
+    {
+      "name": "domains_delete_record",
+      "description": "Delete a domain record from a domain.",
+      "method": "DELETE",
+      "path": "/v2/domains/{domain_name}/records/{domain_record_id}",
+      "params": [
+        {
+          "name": "domain_name",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The name of the domain."
+        },
+        {
+          "name": "domain_record_id",
+          "type": "integer",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the domain record."
+        }
+      ]
+    },
+    {
+      "name": "droplets_list",
+      "description": "List all Droplets.",
+      "method": "GET",
+      "path": "/v2/droplets",
+      "params": []
+    },
+    {
+      "name": "droplets_create",
+      "description": "Create a new Droplet.",
+      "method": "POST",
+      "path": "/v2/droplets",
+      "params": []
+    },
+    {
+      "name": "droplets_destroy_by_tag",
+      "description": "Delete Droplets by tag.",
+      "method": "DELETE",
+      "path": "/v2/droplets",
+      "params": []
+    },
+    {
+      "name": "droplets_get",
+      "description": "Retrieve a specific Droplet by ID.",
+      "method": "GET",
+      "path": "/v2/droplets/{droplet_id}",
+      "params": [
+        {
+          "name": "droplet_id",
+          "type": "integer",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the Droplet."
+        }
+      ]
+    },
+    {
+      "name": "droplets_destroy",
+      "description": "Delete a Droplet by ID.",
+      "method": "DELETE",
+      "path": "/v2/droplets/{droplet_id}",
+      "params": [
+        {
+          "name": "droplet_id",
+          "type": "integer",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the Droplet."
+        }
+      ]
+    },
+    {
+      "name": "droplets_list_backups",
+      "description": "List backups for a specific Droplet.",
+      "method": "GET",
+      "path": "/v2/droplets/{droplet_id}/backups",
+      "params": [
+        {
+          "name": "droplet_id",
+          "type": "integer",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the Droplet."
+        }
+      ]
+    },
+    {
+      "name": "droplets_get_backup_policy",
+      "description": "Retrieve the backup policy for a specific Droplet.",
+      "method": "GET",
+      "path": "/v2/droplets/{droplet_id}/backups/policy",
+      "params": [
+        {
+          "name": "droplet_id",
+          "type": "integer",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the Droplet."
+        }
+      ]
+    },
+    {
+      "name": "droplets_list_backup_policies",
+      "description": "List backup policies for all Droplets.",
+      "method": "GET",
+      "path": "/v2/droplets/backups/policies",
+      "params": []
+    },
+    {
+      "name": "droplets_list_supported_backup_policies",
+      "description": "List supported backup policies.",
+      "method": "GET",
+      "path": "/v2/droplets/backups/supported_policies",
+      "params": []
+    },
+    {
+      "name": "droplets_list_snapshots",
+      "description": "List snapshots for a specific Droplet.",
+      "method": "GET",
+      "path": "/v2/droplets/{droplet_id}/snapshots",
+      "params": [
+        {
+          "name": "droplet_id",
+          "type": "integer",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the Droplet."
+        }
+      ]
+    },
+    {
+      "name": "droplet_actions_list",
+      "description": "List all actions performed on a specific Droplet.",
+      "method": "GET",
+      "path": "/v2/droplets/{droplet_id}/actions",
+      "params": [
+        {
+          "name": "droplet_id",
+          "type": "integer",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the Droplet."
+        }
+      ]
+    },
+    {
+      "name": "droplet_actions_post",
+      "description": "Perform an action on a specific Droplet.",
+      "method": "POST",
+      "path": "/v2/droplets/{droplet_id}/actions",
+      "params": [
+        {
+          "name": "droplet_id",
+          "type": "integer",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the Droplet."
+        }
+      ]
+    },
+    {
+      "name": "droplet_actions_post_by_tag",
+      "description": "Perform an action on multiple Droplets by tag.",
+      "method": "POST",
+      "path": "/v2/droplets/actions",
+      "params": []
+    },
+    {
+      "name": "droplet_actions_get",
+      "description": "Retrieve a specific action performed on a Droplet.",
+      "method": "GET",
+      "path": "/v2/droplets/{droplet_id}/actions/{action_id}",
+      "params": [
+        {
+          "name": "droplet_id",
+          "type": "integer",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the Droplet."
+        },
+        {
+          "name": "action_id",
+          "type": "integer",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the action."
+        }
+      ]
+    },
+    {
+      "name": "droplets_list_kernels",
+      "description": "List available kernels for a specific Droplet.",
+      "method": "GET",
+      "path": "/v2/droplets/{droplet_id}/kernels",
+      "params": [
+        {
+          "name": "droplet_id",
+          "type": "integer",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the Droplet."
+        }
+      ]
+    },
+    {
+      "name": "droplets_list_firewalls",
+      "description": "List firewalls applied to a specific Droplet.",
+      "method": "GET",
+      "path": "/v2/droplets/{droplet_id}/firewalls",
+      "params": [
+        {
+          "name": "droplet_id",
+          "type": "integer",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the Droplet."
+        }
+      ]
+    },
+    {
+      "name": "droplets_list_neighbors",
+      "description": "List neighboring Droplets for a specific Droplet.",
+      "method": "GET",
+      "path": "/v2/droplets/{droplet_id}/neighbors",
+      "params": [
+        {
+          "name": "droplet_id",
+          "type": "integer",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the Droplet."
+        }
+      ]
+    },
+    {
+      "name": "droplets_list_associated_resources",
+      "description": "List resources associated with a Droplet that would be destroyed.",
+      "method": "GET",
+      "path": "/v2/droplets/{droplet_id}/destroy_with_associated_resources",
+      "params": [
+        {
+          "name": "droplet_id",
+          "type": "integer",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the Droplet."
+        }
+      ]
+    },
+    {
+      "name": "droplets_destroy_with_associated_resources_selective",
+      "description": "Delete a Droplet and selected associated resources.",
+      "method": "DELETE",
+      "path": "/v2/droplets/{droplet_id}/destroy_with_associated_resources/selective",
+      "params": [
+        {
+          "name": "droplet_id",
+          "type": "integer",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the Droplet."
+        }
+      ]
+    },
+    {
+      "name": "droplets_destroy_with_associated_resources_dangerous",
+      "description": "Dangerously delete a Droplet and all associated resources.",
+      "method": "DELETE",
+      "path": "/v2/droplets/{droplet_id}/destroy_with_associated_resources/dangerous",
+      "params": [
+        {
+          "name": "droplet_id",
+          "type": "integer",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the Droplet."
+        }
+      ]
+    },
+    {
+      "name": "droplets_get_destroy_associated_resources_status",
+      "description": "Retrieve the status of destroying a Droplet and associated resources.",
+      "method": "GET",
+      "path": "/v2/droplets/{droplet_id}/destroy_with_associated_resources/status",
+      "params": [
+        {
+          "name": "droplet_id",
+          "type": "integer",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the Droplet."
+        }
+      ]
+    },
+    {
+      "name": "droplets_destroy_retry_with_associated_resources",
+      "description": "Retry destroying a Droplet and associated resources.",
+      "method": "POST",
+      "path": "/v2/droplets/{droplet_id}/destroy_with_associated_resources/retry",
+      "params": [
+        {
+          "name": "droplet_id",
+          "type": "integer",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the Droplet."
+        }
+      ]
+    },
+    {
+      "name": "autoscale_pool_list",
+      "description": "List all Droplet autoscale pools.",
+      "method": "GET",
+      "path": "/v2/droplets/autoscale",
+      "params": []
+    },
+    {
+      "name": "autoscale_pool_create",
+      "description": "Create a new Droplet autoscale pool.",
+      "method": "POST",
+      "path": "/v2/droplets/autoscale",
+      "params": []
+    },
+    {
+      "name": "autoscale_pool_get",
+      "description": "Retrieve a specific Droplet autoscale pool by ID.",
+      "method": "GET",
+      "path": "/v2/droplets/autoscale/{autoscale_pool_id}",
+      "params": [
+        {
+          "name": "autoscale_pool_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the autoscale pool."
+        }
+      ]
+    },
+    {
+      "name": "autoscale_pool_update",
+      "description": "Update an existing Droplet autoscale pool.",
+      "method": "PUT",
+      "path": "/v2/droplets/autoscale/{autoscale_pool_id}",
+      "params": [
+        {
+          "name": "autoscale_pool_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the autoscale pool."
+        }
+      ]
+    },
+    {
+      "name": "autoscale_pool_delete",
+      "description": "Delete a Droplet autoscale pool.",
+      "method": "DELETE",
+      "path": "/v2/droplets/autoscale/{autoscale_pool_id}",
+      "params": [
+        {
+          "name": "autoscale_pool_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the autoscale pool."
+        }
+      ]
+    },
+    {
+      "name": "autoscale_pool_delete_dangerous",
+      "description": "Dangerously delete a Droplet autoscale pool and its associated resources.",
+      "method": "DELETE",
+      "path": "/v2/droplets/autoscale/{autoscale_pool_id}/dangerous",
+      "params": [
+        {
+          "name": "autoscale_pool_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the autoscale pool."
+        }
+      ]
+    },
+    {
+      "name": "autoscale_pool_list_members",
+      "description": "List members of a Droplet autoscale pool.",
+      "method": "GET",
+      "path": "/v2/droplets/autoscale/{autoscale_pool_id}/members",
+      "params": [
+        {
+          "name": "autoscale_pool_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the autoscale pool."
+        }
+      ]
+    },
+    {
+      "name": "autoscale_pool_list_history",
+      "description": "List history for a Droplet autoscale pool.",
+      "method": "GET",
+      "path": "/v2/droplets/autoscale/{autoscale_pool_id}/history",
+      "params": [
+        {
+          "name": "autoscale_pool_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the autoscale pool."
+        }
+      ]
+    },
+    {
+      "name": "firewalls_list",
+      "description": "List all cloud firewalls.",
+      "method": "GET",
+      "path": "/v2/firewalls",
+      "params": []
+    },
+    {
+      "name": "firewalls_create",
+      "description": "Create a new cloud firewall.",
+      "method": "POST",
+      "path": "/v2/firewalls",
+      "params": []
+    },
+    {
+      "name": "firewalls_get",
+      "description": "Retrieve a specific cloud firewall by ID.",
+      "method": "GET",
+      "path": "/v2/firewalls/{firewall_id}",
+      "params": [
+        {
+          "name": "firewall_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the firewall."
+        }
+      ]
+    },
+    {
+      "name": "firewalls_update",
+      "description": "Update an existing cloud firewall.",
+      "method": "PUT",
+      "path": "/v2/firewalls/{firewall_id}",
+      "params": [
+        {
+          "name": "firewall_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the firewall."
+        }
+      ]
+    },
+    {
+      "name": "firewalls_delete",
+      "description": "Delete a cloud firewall.",
+      "method": "DELETE",
+      "path": "/v2/firewalls/{firewall_id}",
+      "params": [
+        {
+          "name": "firewall_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the firewall."
+        }
+      ]
+    },
+    {
+      "name": "firewalls_assign_droplets",
+      "description": "Assign Droplets to a firewall.",
+      "method": "POST",
+      "path": "/v2/firewalls/{firewall_id}/droplets",
+      "params": [
+        {
+          "name": "firewall_id",
+          "type": "string",
+          "required": true,
+          "location": "path",
+          "description": "The ID of the firewall."
+        }
+      ]
+    }
+  ]
+}
