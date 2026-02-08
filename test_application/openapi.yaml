@@ -1,0 +1,191 @@
+openapi: "3.0.3"
+info:
+  title: Basic Math API
+  version: "1.0.0"
+  description: A simple REST API that performs basic math operations — addition, subtraction, multiplication, and division.
+servers:
+  - url: http://127.0.0.1:8001
+paths:
+  /add:
+    post:
+      operationId: addNumbers
+      summary: Add two numbers
+      description: Returns the sum of a and b.
+      tags: [math]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [a, b]
+              properties:
+                a:
+                  type: number
+                  description: First operand
+                  example: 10
+                b:
+                  type: number
+                  description: Second operand
+                  example: 5
+      responses:
+        "200":
+          description: Successful addition
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  operation:
+                    type: string
+                  a:
+                    type: number
+                  b:
+                    type: number
+                  result:
+                    type: number
+  /subtract:
+    post:
+      operationId: subtractNumbers
+      summary: Subtract two numbers
+      description: Returns a minus b.
+      tags: [math]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [a, b]
+              properties:
+                a:
+                  type: number
+                  description: First operand
+                  example: 10
+                b:
+                  type: number
+                  description: Second operand (subtracted from a)
+                  example: 5
+      responses:
+        "200":
+          description: Successful subtraction
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  operation:
+                    type: string
+                  a:
+                    type: number
+                  b:
+                    type: number
+                  result:
+                    type: number
+  /multiply:
+    post:
+      operationId: multiplyNumbers
+      summary: Multiply two numbers
+      description: Returns the product of a and b.
+      tags: [math]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [a, b]
+              properties:
+                a:
+                  type: number
+                  description: First operand
+                  example: 10
+                b:
+                  type: number
+                  description: Second operand
+                  example: 5
+      responses:
+        "200":
+          description: Successful multiplication
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  operation:
+                    type: string
+                  a:
+                    type: number
+                  b:
+                    type: number
+                  result:
+                    type: number
+  /divide:
+    post:
+      operationId: divideNumbers
+      summary: Divide two numbers
+      description: Returns a divided by b. Returns an error if b is zero.
+      tags: [math]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [a, b]
+              properties:
+                a:
+                  type: number
+                  description: Numerator
+                  example: 10
+                b:
+                  type: number
+                  description: Denominator (must not be zero)
+                  example: 5
+      responses:
+        "200":
+          description: Successful division
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  operation:
+                    type: string
+                  a:
+                    type: number
+                  b:
+                    type: number
+                  result:
+                    type: number
+        "400":
+          description: Division by zero error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  operation:
+                    type: string
+                  a:
+                    type: number
+                  b:
+                    type: number
+                  error:
+                    type: string
+  /health:
+    get:
+      operationId: healthCheck
+      summary: Health check
+      description: Returns server health status.
+      tags: [system]
+      responses:
+        "200":
+          description: Server is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
