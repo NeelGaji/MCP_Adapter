@@ -7,3 +7,4 @@ httpx>=0.28
 jsonschema>=4.20
 pydantic>=2.12
 python-dotenv>=1.0
+fastapi
