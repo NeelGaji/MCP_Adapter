@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { FlowgladProvider } from "@flowglad/nextjs";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -19,7 +20,9 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </head>
       <body className="antialiased">
-        {children}
+        <FlowgladProvider>
+          {children}
+        </FlowgladProvider>
       </body>
     </html>
   );

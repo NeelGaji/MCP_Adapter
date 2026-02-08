@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { NexusLogo } from "./NexusLogo";
+import { BillingButton } from "@/components/BillingButton";
 
 const NAV_LINKS = [
   { label: "Platform", href: "#platform" },
@@ -38,6 +39,7 @@ export function Navbar() {
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
+          <BillingButton />
           <Link href="/adapter/ingest">
             <Button variant="outline" size="sm" className="rounded-full text-sm px-5 glass border-border/50 hover:border-primary/40">
               Try Generator
