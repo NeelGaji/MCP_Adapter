@@ -1,0 +1,1951 @@
+{
+  "source": "https://github.com/encode/httpx",
+  "parser": "gemini",
+  "api_info": {
+    "title": "HTTPX SDK",
+    "version": "",
+    "description": "An HTTP client for Python, providing a clean, modern, and easy-to-use API for making HTTP requests.",
+    "base_url": ""
+  },
+  "tools": [
+    {
+      "name": "httpx.request",
+      "description": "Sends an HTTP request.",
+      "method": "FUNCTION",
+      "path": "httpx.request",
+      "params": [
+        {
+          "name": "method",
+          "type": "string",
+          "required": true,
+          "location": "argument",
+          "description": "HTTP method for the new `Request` object: `GET`, `OPTIONS`, `HEAD`, `POST`, `PUT`, `PATCH`, or `DELETE`.",
+          "default": null
+        },
+        {
+          "name": "url",
+          "type": "string",
+          "required": true,
+          "location": "argument",
+          "description": "URL for the new `Request` object.",
+          "default": null
+        },
+        {
+          "name": "params",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Query parameters to include in the URL, as a string, dictionary, or sequence of two-tuples.",
+          "default": null
+        },
+        {
+          "name": "content",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Binary content to include in the body of the request, as bytes or a byte iterator.",
+          "default": null
+        },
+        {
+          "name": "data",
+          "type": "dict",
+          "required": false,
+          "location": "argument",
+          "description": "Form data to include in the body of the request, as a dictionary.",
+          "default": null
+        },
+        {
+          "name": "files",
+          "type": "dict",
+          "required": false,
+          "location": "argument",
+          "description": "A dictionary of upload files to include in the body of the request.",
+          "default": null
+        },
+        {
+          "name": "json",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "A JSON serializable object to include in the body of the request.",
+          "default": null
+        },
+        {
+          "name": "headers",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Dictionary of HTTP headers to include in the request.",
+          "default": null
+        },
+        {
+          "name": "cookies",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Dictionary of Cookie items to include in the request.",
+          "default": null
+        },
+        {
+          "name": "auth",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "An authentication class to use when sending the request.",
+          "default": null
+        },
+        {
+          "name": "proxy",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "A proxy URL where all the traffic should be routed.",
+          "default": null
+        },
+        {
+          "name": "timeout",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "The timeout configuration to use when sending the request.",
+          "default": "DEFAULT_TIMEOUT_CONFIG"
+        },
+        {
+          "name": "follow_redirects",
+          "type": "bool",
+          "required": false,
+          "location": "argument",
+          "description": "Enables or disables HTTP redirects.",
+          "default": false
+        },
+        {
+          "name": "verify",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Either `True` to use an SSL context with the default CA bundle, `False` to disable verification, or an instance of `ssl.SSLContext` to use a custom context.",
+          "default": true
+        },
+        {
+          "name": "trust_env",
+          "type": "bool",
+          "required": false,
+          "location": "argument",
+          "description": "Enables or disables usage of environment variables for configuration.",
+          "default": true
+        }
+      ],
+      "returns": "Response"
+    },
+    {
+      "name": "httpx.stream",
+      "description": "Alternative to `httpx.request()` that streams the response body instead of loading it into memory at once.",
+      "method": "FUNCTION",
+      "path": "httpx.stream",
+      "params": [
+        {
+          "name": "method",
+          "type": "string",
+          "required": true,
+          "location": "argument",
+          "description": "HTTP method for the new `Request` object: `GET`, `OPTIONS`, `HEAD`, `POST`, `PUT`, `PATCH`, or `DELETE`.",
+          "default": null
+        },
+        {
+          "name": "url",
+          "type": "string",
+          "required": true,
+          "location": "argument",
+          "description": "URL for the new `Request` object.",
+          "default": null
+        },
+        {
+          "name": "params",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Query parameters to include in the URL, as a string, dictionary, or sequence of two-tuples.",
+          "default": null
+        },
+        {
+          "name": "content",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Binary content to include in the body of the request, as bytes or a byte iterator.",
+          "default": null
+        },
+        {
+          "name": "data",
+          "type": "dict",
+          "required": false,
+          "location": "argument",
+          "description": "Form data to include in the body of the request, as a dictionary.",
+          "default": null
+        },
+        {
+          "name": "files",
+          "type": "dict",
+          "required": false,
+          "location": "argument",
+          "description": "A dictionary of upload files to include in the body of the request.",
+          "default": null
+        },
+        {
+          "name": "json",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "A JSON serializable object to include in the body of the request.",
+          "default": null
+        },
+        {
+          "name": "headers",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Dictionary of HTTP headers to include in the request.",
+          "default": null
+        },
+        {
+          "name": "cookies",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Dictionary of Cookie items to include in the request.",
+          "default": null
+        },
+        {
+          "name": "auth",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "An authentication class to use when sending the request.",
+          "default": null
+        },
+        {
+          "name": "proxy",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "A proxy URL where all the traffic should be routed.",
+          "default": null
+        },
+        {
+          "name": "timeout",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "The timeout configuration to use when sending the request.",
+          "default": "DEFAULT_TIMEOUT_CONFIG"
+        },
+        {
+          "name": "follow_redirects",
+          "type": "bool",
+          "required": false,
+          "location": "argument",
+          "description": "Enables or disables HTTP redirects.",
+          "default": false
+        },
+        {
+          "name": "verify",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Either `True` to use an SSL context with the default CA bundle, `False` to disable verification, or an instance of `ssl.SSLContext` to use a custom context.",
+          "default": true
+        },
+        {
+          "name": "trust_env",
+          "type": "bool",
+          "required": false,
+          "location": "argument",
+          "description": "Enables or disables usage of environment variables for configuration.",
+          "default": true
+        }
+      ],
+      "returns": "Iterator[Response]"
+    },
+    {
+      "name": "httpx.get",
+      "description": "Sends a `GET` request.",
+      "method": "FUNCTION",
+      "path": "httpx.get",
+      "params": [
+        {
+          "name": "url",
+          "type": "string",
+          "required": true,
+          "location": "argument",
+          "description": "URL for the new `Request` object.",
+          "default": null
+        },
+        {
+          "name": "params",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Query parameters to include in the URL, as a string, dictionary, or sequence of two-tuples.",
+          "default": null
+        },
+        {
+          "name": "headers",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Dictionary of HTTP headers to include in the request.",
+          "default": null
+        },
+        {
+          "name": "cookies",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Dictionary of Cookie items to include in the request.",
+          "default": null
+        },
+        {
+          "name": "auth",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "An authentication class to use when sending the request.",
+          "default": null
+        },
+        {
+          "name": "proxy",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "A proxy URL where all the traffic should be routed.",
+          "default": null
+        },
+        {
+          "name": "follow_redirects",
+          "type": "bool",
+          "required": false,
+          "location": "argument",
+          "description": "Enables or disables HTTP redirects.",
+          "default": false
+        },
+        {
+          "name": "verify",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Either `True` to use an SSL context with the default CA bundle, `False` to disable verification, or an instance of `ssl.SSLContext` to use a custom context.",
+          "default": true
+        },
+        {
+          "name": "timeout",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "The timeout configuration to use when sending the request.",
+          "default": "DEFAULT_TIMEOUT_CONFIG"
+        },
+        {
+          "name": "trust_env",
+          "type": "bool",
+          "required": false,
+          "location": "argument",
+          "description": "Enables or disables usage of environment variables for configuration.",
+          "default": true
+        }
+      ],
+      "returns": "Response"
+    },
+    {
+      "name": "httpx.options",
+      "description": "Sends an `OPTIONS` request.",
+      "method": "FUNCTION",
+      "path": "httpx.options",
+      "params": [
+        {
+          "name": "url",
+          "type": "string",
+          "required": true,
+          "location": "argument",
+          "description": "URL for the new `Request` object.",
+          "default": null
+        },
+        {
+          "name": "params",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Query parameters to include in the URL, as a string, dictionary, or sequence of two-tuples.",
+          "default": null
+        },
+        {
+          "name": "headers",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Dictionary of HTTP headers to include in the request.",
+          "default": null
+        },
+        {
+          "name": "cookies",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Dictionary of Cookie items to include in the request.",
+          "default": null
+        },
+        {
+          "name": "auth",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "An authentication class to use when sending the request.",
+          "default": null
+        },
+        {
+          "name": "proxy",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "A proxy URL where all the traffic should be routed.",
+          "default": null
+        },
+        {
+          "name": "follow_redirects",
+          "type": "bool",
+          "required": false,
+          "location": "argument",
+          "description": "Enables or disables HTTP redirects.",
+          "default": false
+        },
+        {
+          "name": "verify",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Either `True` to use an SSL context with the default CA bundle, `False` to disable verification, or an instance of `ssl.SSLContext` to use a custom context.",
+          "default": true
+        },
+        {
+          "name": "timeout",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "The timeout configuration to use when sending the request.",
+          "default": "DEFAULT_TIMEOUT_CONFIG"
+        },
+        {
+          "name": "trust_env",
+          "type": "bool",
+          "required": false,
+          "location": "argument",
+          "description": "Enables or disables usage of environment variables for configuration.",
+          "default": true
+        }
+      ],
+      "returns": "Response"
+    },
+    {
+      "name": "httpx.head",
+      "description": "Sends a `HEAD` request.",
+      "method": "FUNCTION",
+      "path": "httpx.head",
+      "params": [
+        {
+          "name": "url",
+          "type": "string",
+          "required": true,
+          "location": "argument",
+          "description": "URL for the new `Request` object.",
+          "default": null
+        },
+        {
+          "name": "params",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Query parameters to include in the URL, as a string, dictionary, or sequence of two-tuples.",
+          "default": null
+        },
+        {
+          "name": "headers",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Dictionary of HTTP headers to include in the request.",
+          "default": null
+        },
+        {
+          "name": "cookies",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Dictionary of Cookie items to include in the request.",
+          "default": null
+        },
+        {
+          "name": "auth",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "An authentication class to use when sending the request.",
+          "default": null
+        },
+        {
+          "name": "proxy",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "A proxy URL where all the traffic should be routed.",
+          "default": null
+        },
+        {
+          "name": "follow_redirects",
+          "type": "bool",
+          "required": false,
+          "location": "argument",
+          "description": "Enables or disables HTTP redirects.",
+          "default": false
+        },
+        {
+          "name": "verify",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Either `True` to use an SSL context with the default CA bundle, `False` to disable verification, or an instance of `ssl.SSLContext` to use a custom context.",
+          "default": true
+        },
+        {
+          "name": "timeout",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "The timeout configuration to use when sending the request.",
+          "default": "DEFAULT_TIMEOUT_CONFIG"
+        },
+        {
+          "name": "trust_env",
+          "type": "bool",
+          "required": false,
+          "location": "argument",
+          "description": "Enables or disables usage of environment variables for configuration.",
+          "default": true
+        }
+      ],
+      "returns": "Response"
+    },
+    {
+      "name": "httpx.post",
+      "description": "Sends a `POST` request.",
+      "method": "FUNCTION",
+      "path": "httpx.post",
+      "params": [
+        {
+          "name": "url",
+          "type": "string",
+          "required": true,
+          "location": "argument",
+          "description": "URL for the new `Request` object.",
+          "default": null
+        },
+        {
+          "name": "content",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Binary content to include in the body of the request, as bytes or a byte iterator.",
+          "default": null
+        },
+        {
+          "name": "data",
+          "type": "dict",
+          "required": false,
+          "location": "argument",
+          "description": "Form data to include in the body of the request, as a dictionary.",
+          "default": null
+        },
+        {
+          "name": "files",
+          "type": "dict",
+          "required": false,
+          "location": "argument",
+          "description": "A dictionary of upload files to include in the body of the request.",
+          "default": null
+        },
+        {
+          "name": "json",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "A JSON serializable object to include in the body of the request.",
+          "default": null
+        },
+        {
+          "name": "params",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Query parameters to include in the URL, as a string, dictionary, or sequence of two-tuples.",
+          "default": null
+        },
+        {
+          "name": "headers",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Dictionary of HTTP headers to include in the request.",
+          "default": null
+        },
+        {
+          "name": "cookies",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Dictionary of Cookie items to include in the request.",
+          "default": null
+        },
+        {
+          "name": "auth",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "An authentication class to use when sending the request.",
+          "default": null
+        },
+        {
+          "name": "proxy",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "A proxy URL where all the traffic should be routed.",
+          "default": null
+        },
+        {
+          "name": "follow_redirects",
+          "type": "bool",
+          "required": false,
+          "location": "argument",
+          "description": "Enables or disables HTTP redirects.",
+          "default": false
+        },
+        {
+          "name": "verify",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Either `True` to use an SSL context with the default CA bundle, `False` to disable verification, or an instance of `ssl.SSLContext` to use a custom context.",
+          "default": true
+        },
+        {
+          "name": "timeout",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "The timeout configuration to use when sending the request.",
+          "default": "DEFAULT_TIMEOUT_CONFIG"
+        },
+        {
+          "name": "trust_env",
+          "type": "bool",
+          "required": false,
+          "location": "argument",
+          "description": "Enables or disables usage of environment variables for configuration.",
+          "default": true
+        }
+      ],
+      "returns": "Response"
+    },
+    {
+      "name": "httpx.put",
+      "description": "Sends a `PUT` request.",
+      "method": "FUNCTION",
+      "path": "httpx.put",
+      "params": [
+        {
+          "name": "url",
+          "type": "string",
+          "required": true,
+          "location": "argument",
+          "description": "URL for the new `Request` object.",
+          "default": null
+        },
+        {
+          "name": "content",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Binary content to include in the body of the request, as bytes or a byte iterator.",
+          "default": null
+        },
+        {
+          "name": "data",
+          "type": "dict",
+          "required": false,
+          "location": "argument",
+          "description": "Form data to include in the body of the request, as a dictionary.",
+          "default": null
+        },
+        {
+          "name": "files",
+          "type": "dict",
+          "required": false,
+          "location": "argument",
+          "description": "A dictionary of upload files to include in the body of the request.",
+          "default": null
+        },
+        {
+          "name": "json",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "A JSON serializable object to include in the body of the request.",
+          "default": null
+        },
+        {
+          "name": "params",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Query parameters to include in the URL, as a string, dictionary, or sequence of two-tuples.",
+          "default": null
+        },
+        {
+          "name": "headers",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Dictionary of HTTP headers to include in the request.",
+          "default": null
+        },
+        {
+          "name": "cookies",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Dictionary of Cookie items to include in the request.",
+          "default": null
+        },
+        {
+          "name": "auth",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "An authentication class to use when sending the request.",
+          "default": null
+        },
+        {
+          "name": "proxy",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "A proxy URL where all the traffic should be routed.",
+          "default": null
+        },
+        {
+          "name": "follow_redirects",
+          "type": "bool",
+          "required": false,
+          "location": "argument",
+          "description": "Enables or disables HTTP redirects.",
+          "default": false
+        },
+        {
+          "name": "verify",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Either `True` to use an SSL context with the default CA bundle, `False` to disable verification, or an instance of `ssl.SSLContext` to use a custom context.",
+          "default": true
+        },
+        {
+          "name": "timeout",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "The timeout configuration to use when sending the request.",
+          "default": "DEFAULT_TIMEOUT_CONFIG"
+        },
+        {
+          "name": "trust_env",
+          "type": "bool",
+          "required": false,
+          "location": "argument",
+          "description": "Enables or disables usage of environment variables for configuration.",
+          "default": true
+        }
+      ],
+      "returns": "Response"
+    },
+    {
+      "name": "httpx.patch",
+      "description": "Sends a `PATCH` request.",
+      "method": "FUNCTION",
+      "path": "httpx.patch",
+      "params": [
+        {
+          "name": "url",
+          "type": "string",
+          "required": true,
+          "location": "argument",
+          "description": "URL for the new `Request` object.",
+          "default": null
+        },
+        {
+          "name": "content",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Binary content to include in the body of the request, as bytes or a byte iterator.",
+          "default": null
+        },
+        {
+          "name": "data",
+          "type": "dict",
+          "required": false,
+          "location": "argument",
+          "description": "Form data to include in the body of the request, as a dictionary.",
+          "default": null
+        },
+        {
+          "name": "files",
+          "type": "dict",
+          "required": false,
+          "location": "argument",
+          "description": "A dictionary of upload files to include in the body of the request.",
+          "default": null
+        },
+        {
+          "name": "json",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "A JSON serializable object to include in the body of the request.",
+          "default": null
+        },
+        {
+          "name": "params",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Query parameters to include in the URL, as a string, dictionary, or sequence of two-tuples.",
+          "default": null
+        },
+        {
+          "name": "headers",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Dictionary of HTTP headers to include in the request.",
+          "default": null
+        },
+        {
+          "name": "cookies",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Dictionary of Cookie items to include in the request.",
+          "default": null
+        },
+        {
+          "name": "auth",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "An authentication class to use when sending the request.",
+          "default": null
+        },
+        {
+          "name": "proxy",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "A proxy URL where all the traffic should be routed.",
+          "default": null
+        },
+        {
+          "name": "follow_redirects",
+          "type": "bool",
+          "required": false,
+          "location": "argument",
+          "description": "Enables or disables HTTP redirects.",
+          "default": false
+        },
+        {
+          "name": "verify",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Either `True` to use an SSL context with the default CA bundle, `False` to disable verification, or an instance of `ssl.SSLContext` to use a custom context.",
+          "default": true
+        },
+        {
+          "name": "timeout",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "The timeout configuration to use when sending the request.",
+          "default": "DEFAULT_TIMEOUT_CONFIG"
+        },
+        {
+          "name": "trust_env",
+          "type": "bool",
+          "required": false,
+          "location": "argument",
+          "description": "Enables or disables usage of environment variables for configuration.",
+          "default": true
+        }
+      ],
+      "returns": "Response"
+    },
+    {
+      "name": "httpx.delete",
+      "description": "Sends a `DELETE` request.",
+      "method": "FUNCTION",
+      "path": "httpx.delete",
+      "params": [
+        {
+          "name": "url",
+          "type": "string",
+          "required": true,
+          "location": "argument",
+          "description": "URL for the new `Request` object.",
+          "default": null
+        },
+        {
+          "name": "params",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Query parameters to include in the URL, as a string, dictionary, or sequence of two-tuples.",
+          "default": null
+        },
+        {
+          "name": "headers",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Dictionary of HTTP headers to include in the request.",
+          "default": null
+        },
+        {
+          "name": "cookies",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Dictionary of Cookie items to include in the request.",
+          "default": null
+        },
+        {
+          "name": "auth",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "An authentication class to use when sending the request.",
+          "default": null
+        },
+        {
+          "name": "proxy",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "A proxy URL where all the traffic should be routed.",
+          "default": null
+        },
+        {
+          "name": "follow_redirects",
+          "type": "bool",
+          "required": false,
+          "location": "argument",
+          "description": "Enables or disables HTTP redirects.",
+          "default": false
+        },
+        {
+          "name": "timeout",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "The timeout configuration to use when sending the request.",
+          "default": "DEFAULT_TIMEOUT_CONFIG"
+        },
+        {
+          "name": "verify",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Either `True` to use an SSL context with the default CA bundle, `False` to disable verification, or an instance of `ssl.SSLContext` to use a custom context.",
+          "default": true
+        },
+        {
+          "name": "trust_env",
+          "type": "bool",
+          "required": false,
+          "location": "argument",
+          "description": "Enables or disables usage of environment variables for configuration.",
+          "default": true
+        }
+      ],
+      "returns": "Response"
+    },
+    {
+      "name": "httpx.Client",
+      "description": "An HTTP client, with connection pooling, HTTP/2, redirects, cookie persistence, etc.",
+      "method": "FUNCTION",
+      "path": "httpx._client.Client",
+      "params": [
+        {
+          "name": "auth",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "An authentication class to use when sending requests.",
+          "default": null
+        },
+        {
+          "name": "params",
+          "type": "string | dict | list",
+          "required": false,
+          "location": "argument",
+          "description": "Query parameters to include in request URLs, as a string, dictionary, or sequence of two-tuples.",
+          "default": null
+        },
+        {
+          "name": "headers",
+          "type": "dict | list",
+          "required": false,
+          "location": "argument",
+          "description": "Dictionary of HTTP headers to include when sending requests.",
+          "default": null
+        },
+        {
+          "name": "cookies",
+          "type": "dict | list",
+          "required": false,
+          "location": "argument",
+          "description": "Dictionary of Cookie items to include when sending requests.",
+          "default": null
+        },
+        {
+          "name": "verify",
+          "type": "boolean | object | string",
+          "required": false,
+          "location": "argument",
+          "description": "Either `True` to use an SSL context with the default CA bundle, `False` to disable verification, or an instance of `ssl.SSLContext` to use a custom context.",
+          "default": "true"
+        },
+        {
+          "name": "cert",
+          "type": "string | tuple",
+          "required": false,
+          "location": "argument",
+          "description": "Client SSL certificate, either path to a file or tuple of (cert, key) paths.",
+          "default": null
+        },
+        {
+          "name": "trust_env",
+          "type": "bool",
+          "required": false,
+          "location": "argument",
+          "description": "Enables or disables usage of environment variables for configuration.",
+          "default": "true"
+        },
+        {
+          "name": "http1",
+          "type": "bool",
+          "required": false,
+          "location": "argument",
+          "description": "A boolean indicating if HTTP/1.1 support should be enabled. Defaults to `True`.",
+          "default": "true"
+        },
+        {
+          "name": "http2",
+          "type": "bool",
+          "required": false,
+          "location": "argument",
+          "description": "A boolean indicating if HTTP/2 support should be enabled. Defaults to `False`.",
+          "default": "false"
+        },
+        {
+          "name": "proxy",
+          "type": "object | string",
+          "required": false,
+          "location": "argument",
+          "description": "A proxy URL where all the traffic should be routed.",
+          "default": null
+        },
+        {
+          "name": "mounts",
+          "type": "dict",
+          "required": false,
+          "location": "argument",
+          "description": "A mapping of URL patterns to HTTP transports.",
+          "default": null
+        },
+        {
+          "name": "timeout",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "The timeout configuration to use when sending requests.",
+          "default": "DEFAULT_TIMEOUT_CONFIG"
+        },
+        {
+          "name": "follow_redirects",
+          "type": "bool",
+          "required": false,
+          "location": "argument",
+          "description": "A boolean indicating if redirects should be followed.",
+          "default": "false"
+        },
+        {
+          "name": "limits",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "The limits configuration to use.",
+          "default": "DEFAULT_LIMITS"
+        },
+        {
+          "name": "max_redirects",
+          "type": "int",
+          "required": false,
+          "location": "argument",
+          "description": "The maximum number of redirect responses that should be followed.",
+          "default": "20"
+        },
+        {
+          "name": "event_hooks",
+          "type": "dict",
+          "required": false,
+          "location": "argument",
+          "description": "A mapping of event names to a list of callables for request/response hooks.",
+          "default": null
+        },
+        {
+          "name": "base_url",
+          "type": "string",
+          "required": false,
+          "location": "argument",
+          "description": "A URL to use as the base when building request URLs.",
+          "default": "\"\""
+        },
+        {
+          "name": "transport",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "A transport class to use for sending requests over the network.",
+          "default": null
+        },
+        {
+          "name": "default_encoding",
+          "type": "object | string",
+          "required": false,
+          "location": "argument",
+          "description": "The default encoding to use for decoding response text, if no charset information is included in a response Content-Type header. Set to a callable for automatic character set detection. Default: 'utf-8'.",
+          "default": "\"utf-8\""
+        }
+      ],
+      "returns": "Client instance"
+    },
+    {
+      "name": "httpx.Client.request",
+      "description": "Build and send a request.",
+      "method": "FUNCTION",
+      "path": "httpx._client.Client.request",
+      "params": [
+        {
+          "name": "method",
+          "type": "str",
+          "required": true,
+          "location": "argument",
+          "description": "The HTTP method for the request (e.g., 'GET', 'POST').",
+          "default": null
+        },
+        {
+          "name": "url",
+          "type": "string",
+          "required": true,
+          "location": "argument",
+          "description": "The URL for the request, as a string or a `httpx.URL` object.",
+          "default": null
+        },
+        {
+          "name": "content",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "The request body as bytes.",
+          "default": null
+        },
+        {
+          "name": "data",
+          "type": "dict | list",
+          "required": false,
+          "location": "argument",
+          "description": "The request body as form data (dict or list of tuples).",
+          "default": null
+        },
+        {
+          "name": "files",
+          "type": "dict | list",
+          "required": false,
+          "location": "argument",
+          "description": "Files to upload (dict or list of tuples).",
+          "default": null
+        },
+        {
+          "name": "json",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "The request body as JSON.",
+          "default": null
+        },
+        {
+          "name": "params",
+          "type": "string | dict | list",
+          "required": false,
+          "location": "argument",
+          "description": "Query parameters to include in the URL.",
+          "default": null
+        },
+        {
+          "name": "headers",
+          "type": "dict | list",
+          "required": false,
+          "location": "argument",
+          "description": "HTTP headers to include in the request.",
+          "default": null
+        },
+        {
+          "name": "cookies",
+          "type": "dict | list",
+          "required": false,
+          "location": "argument",
+          "description": "Cookie values to include in the request.",
+          "default": null
+        },
+        {
+          "name": "auth",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Authentication class to use for this request, overriding client-level auth.",
+          "default": "Client default configuration"
+        },
+        {
+          "name": "follow_redirects",
+          "type": "bool",
+          "required": false,
+          "location": "argument",
+          "description": "Whether to follow redirects for this request, overriding client-level setting.",
+          "default": "Client default configuration"
+        },
+        {
+          "name": "timeout",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "The timeout configuration for this request, overriding client-level timeout.",
+          "default": "Client default configuration"
+        },
+        {
+          "name": "extensions",
+          "type": "dict",
+          "required": false,
+          "location": "argument",
+          "description": "A dictionary of extensions to modify request behavior.",
+          "default": null
+        }
+      ],
+      "returns": "httpx.Response"
+    },
+    {
+      "name": "httpx.Client.stream",
+      "description": "Alternative to `httpx.request()` that streams the response body instead of loading it into memory at once.",
+      "method": "FUNCTION",
+      "path": "httpx._client.Client.stream",
+      "params": [
+        {
+          "name": "method",
+          "type": "str",
+          "required": true,
+          "location": "argument",
+          "description": "The HTTP method for the request (e.g., 'GET', 'POST').",
+          "default": null
+        },
+        {
+          "name": "url",
+          "type": "string",
+          "required": true,
+          "location": "argument",
+          "description": "The URL for the request, as a string or a `httpx.URL` object.",
+          "default": null
+        },
+        {
+          "name": "content",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "The request body as bytes.",
+          "default": null
+        },
+        {
+          "name": "data",
+          "type": "dict | list",
+          "required": false,
+          "location": "argument",
+          "description": "The request body as form data (dict or list of tuples).",
+          "default": null
+        },
+        {
+          "name": "files",
+          "type": "dict | list",
+          "required": false,
+          "location": "argument",
+          "description": "Files to upload (dict or list of tuples).",
+          "default": null
+        },
+        {
+          "name": "json",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "The request body as JSON.",
+          "default": null
+        },
+        {
+          "name": "params",
+          "type": "string | dict | list",
+          "required": false,
+          "location": "argument",
+          "description": "Query parameters to include in the URL.",
+          "default": null
+        },
+        {
+          "name": "headers",
+          "type": "dict | list",
+          "required": false,
+          "location": "argument",
+          "description": "HTTP headers to include in the request.",
+          "default": null
+        },
+        {
+          "name": "cookies",
+          "type": "dict | list",
+          "required": false,
+          "location": "argument",
+          "description": "Cookie values to include in the request.",
+          "default": null
+        },
+        {
+          "name": "auth",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Authentication class to use for this request, overriding client-level auth.",
+          "default": "Client default configuration"
+        },
+        {
+          "name": "follow_redirects",
+          "type": "bool",
+          "required": false,
+          "location": "argument",
+          "description": "Whether to follow redirects for this request, overriding client-level setting.",
+          "default": "Client default configuration"
+        },
+        {
+          "name": "timeout",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "The timeout configuration for this request, overriding client-level timeout.",
+          "default": "Client default configuration"
+        },
+        {
+          "name": "extensions",
+          "type": "dict",
+          "required": false,
+          "location": "argument",
+          "description": "A dictionary of extensions to modify request behavior.",
+          "default": null
+        }
+      ],
+      "returns": "Iterator[httpx.Response]"
+    },
+    {
+      "name": "httpx.Client.send",
+      "description": "Send a request.",
+      "method": "FUNCTION",
+      "path": "httpx._client.Client.send",
+      "params": [
+        {
+          "name": "request",
+          "type": "object",
+          "required": true,
+          "location": "argument",
+          "description": "A `httpx.Request` instance to send.",
+          "default": null
+        },
+        {
+          "name": "stream",
+          "type": "bool",
+          "required": false,
+          "location": "argument",
+          "description": "Whether to stream the response body, rather than loading it into memory at once.",
+          "default": "false"
+        },
+        {
+          "name": "auth",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Authentication class to use for this request, overriding client-level auth.",
+          "default": "Client default configuration"
+        },
+        {
+          "name": "follow_redirects",
+          "type": "bool",
+          "required": false,
+          "location": "argument",
+          "description": "Whether to follow redirects for this request, overriding client-level setting.",
+          "default": "Client default configuration"
+        }
+      ],
+      "returns": "httpx.Response"
+    },
+    {
+      "name": "httpx.Client.get",
+      "description": "Send a `GET` request.",
+      "method": "FUNCTION",
+      "path": "httpx._client.Client.get",
+      "params": [
+        {
+          "name": "url",
+          "type": "string",
+          "required": true,
+          "location": "argument",
+          "description": "The URL for the request, as a string or a `httpx.URL` object.",
+          "default": null
+        },
+        {
+          "name": "params",
+          "type": "string | dict | list",
+          "required": false,
+          "location": "argument",
+          "description": "Query parameters to include in the URL.",
+          "default": null
+        },
+        {
+          "name": "headers",
+          "type": "dict | list",
+          "required": false,
+          "location": "argument",
+          "description": "HTTP headers to include in the request.",
+          "default": null
+        },
+        {
+          "name": "cookies",
+          "type": "dict | list",
+          "required": false,
+          "location": "argument",
+          "description": "Cookie values to include in the request.",
+          "default": null
+        },
+        {
+          "name": "auth",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Authentication class to use for this request, overriding client-level auth.",
+          "default": "Client default configuration"
+        },
+        {
+          "name": "follow_redirects",
+          "type": "bool",
+          "required": false,
+          "location": "argument",
+          "description": "Whether to follow redirects for this request, overriding client-level setting.",
+          "default": "Client default configuration"
+        },
+        {
+          "name": "timeout",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "The timeout configuration for this request, overriding client-level timeout.",
+          "default": "Client default configuration"
+        },
+        {
+          "name": "extensions",
+          "type": "dict",
+          "required": false,
+          "location": "argument",
+          "description": "A dictionary of extensions to modify request behavior.",
+          "default": null
+        }
+      ],
+      "returns": "httpx.Response"
+    },
+    {
+      "name": "httpx.Client.options",
+      "description": "Send an `OPTIONS` request.",
+      "method": "FUNCTION",
+      "path": "httpx._client.Client.options",
+      "params": [
+        {
+          "name": "url",
+          "type": "string",
+          "required": true,
+          "location": "argument",
+          "description": "The URL for the request, as a string or a `httpx.URL` object.",
+          "default": null
+        },
+        {
+          "name": "params",
+          "type": "string | dict | list",
+          "required": false,
+          "location": "argument",
+          "description": "Query parameters to include in the URL.",
+          "default": null
+        },
+        {
+          "name": "headers",
+          "type": "dict | list",
+          "required": false,
+          "location": "argument",
+          "description": "HTTP headers to include in the request.",
+          "default": null
+        },
+        {
+          "name": "cookies",
+          "type": "dict | list",
+          "required": false,
+          "location": "argument",
+          "description": "Cookie values to include in the request.",
+          "default": null
+        },
+        {
+          "name": "auth",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Authentication class to use for this request, overriding client-level auth.",
+          "default": "Client default configuration"
+        },
+        {
+          "name": "follow_redirects",
+          "type": "bool",
+          "required": false,
+          "location": "argument",
+          "description": "Whether to follow redirects for this request, overriding client-level setting.",
+          "default": "Client default configuration"
+        },
+        {
+          "name": "timeout",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "The timeout configuration for this request, overriding client-level timeout.",
+          "default": "Client default configuration"
+        },
+        {
+          "name": "extensions",
+          "type": "dict",
+          "required": false,
+          "location": "argument",
+          "description": "A dictionary of extensions to modify request behavior.",
+          "default": null
+        }
+      ],
+      "returns": "httpx.Response"
+    },
+    {
+      "name": "httpx.Client.head",
+      "description": "Send a `HEAD` request.",
+      "method": "FUNCTION",
+      "path": "httpx._client.Client.head",
+      "params": [
+        {
+          "name": "url",
+          "type": "string",
+          "required": true,
+          "location": "argument",
+          "description": "The URL for the request, as a string or a `httpx.URL` object.",
+          "default": null
+        },
+        {
+          "name": "params",
+          "type": "string | dict | list",
+          "required": false,
+          "location": "argument",
+          "description": "Query parameters to include in the URL.",
+          "default": null
+        },
+        {
+          "name": "headers",
+          "type": "dict | list",
+          "required": false,
+          "location": "argument",
+          "description": "HTTP headers to include in the request.",
+          "default": null
+        },
+        {
+          "name": "cookies",
+          "type": "dict | list",
+          "required": false,
+          "location": "argument",
+          "description": "Cookie values to include in the request.",
+          "default": null
+        },
+        {
+          "name": "auth",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Authentication class to use for this request, overriding client-level auth.",
+          "default": "Client default configuration"
+        },
+        {
+          "name": "follow_redirects",
+          "type": "bool",
+          "required": false,
+          "location": "argument",
+          "description": "Whether to follow redirects for this request, overriding client-level setting.",
+          "default": "Client default configuration"
+        },
+        {
+          "name": "timeout",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "The timeout configuration for this request, overriding client-level timeout.",
+          "default": "Client default configuration"
+        },
+        {
+          "name": "extensions",
+          "type": "dict",
+          "required": false,
+          "location": "argument",
+          "description": "A dictionary of extensions to modify request behavior.",
+          "default": null
+        }
+      ],
+      "returns": "httpx.Response"
+    },
+    {
+      "name": "httpx.Client.post",
+      "description": "Send a `POST` request.",
+      "method": "FUNCTION",
+      "path": "httpx._client.Client.post",
+      "params": [
+        {
+          "name": "url",
+          "type": "string",
+          "required": true,
+          "location": "argument",
+          "description": "The URL for the request, as a string or a `httpx.URL` object.",
+          "default": null
+        },
+        {
+          "name": "content",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "The request body as bytes.",
+          "default": null
+        },
+        {
+          "name": "data",
+          "type": "dict | list",
+          "required": false,
+          "location": "argument",
+          "description": "The request body as form data (dict or list of tuples).",
+          "default": null
+        },
+        {
+          "name": "files",
+          "type": "dict | list",
+          "required": false,
+          "location": "argument",
+          "description": "Files to upload (dict or list of tuples).",
+          "default": null
+        },
+        {
+          "name": "json",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "The request body as JSON.",
+          "default": null
+        },
+        {
+          "name": "params",
+          "type": "string | dict | list",
+          "required": false,
+          "location": "argument",
+          "description": "Query parameters to include in the URL.",
+          "default": null
+        },
+        {
+          "name": "headers",
+          "type": "dict | list",
+          "required": false,
+          "location": "argument",
+          "description": "HTTP headers to include in the request.",
+          "default": null
+        },
+        {
+          "name": "cookies",
+          "type": "dict | list",
+          "required": false,
+          "location": "argument",
+          "description": "Cookie values to include in the request.",
+          "default": null
+        },
+        {
+          "name": "auth",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Authentication class to use for this request, overriding client-level auth.",
+          "default": "Client default configuration"
+        },
+        {
+          "name": "follow_redirects",
+          "type": "bool",
+          "required": false,
+          "location": "argument",
+          "description": "Whether to follow redirects for this request, overriding client-level setting.",
+          "default": "Client default configuration"
+        },
+        {
+          "name": "timeout",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "The timeout configuration for this request, overriding client-level timeout.",
+          "default": "Client default configuration"
+        },
+        {
+          "name": "extensions",
+          "type": "dict",
+          "required": false,
+          "location": "argument",
+          "description": "A dictionary of extensions to modify request behavior.",
+          "default": null
+        }
+      ],
+      "returns": "httpx.Response"
+    },
+    {
+      "name": "httpx.Client.put",
+      "description": "Send a `PUT` request.",
+      "method": "FUNCTION",
+      "path": "httpx._client.Client.put",
+      "params": [
+        {
+          "name": "url",
+          "type": "string",
+          "required": true,
+          "location": "argument",
+          "description": "The URL for the request, as a string or a `httpx.URL` object.",
+          "default": null
+        },
+        {
+          "name": "content",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "The request body as bytes.",
+          "default": null
+        },
+        {
+          "name": "data",
+          "type": "dict | list",
+          "required": false,
+          "location": "argument",
+          "description": "The request body as form data (dict or list of tuples).",
+          "default": null
+        },
+        {
+          "name": "files",
+          "type": "dict | list",
+          "required": false,
+          "location": "argument",
+          "description": "Files to upload (dict or list of tuples).",
+          "default": null
+        },
+        {
+          "name": "json",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "The request body as JSON.",
+          "default": null
+        },
+        {
+          "name": "params",
+          "type": "string | dict | list",
+          "required": false,
+          "location": "argument",
+          "description": "Query parameters to include in the URL.",
+          "default": null
+        },
+        {
+          "name": "headers",
+          "type": "dict | list",
+          "required": false,
+          "location": "argument",
+          "description": "HTTP headers to include in the request.",
+          "default": null
+        },
+        {
+          "name": "cookies",
+          "type": "dict | list",
+          "required": false,
+          "location": "argument",
+          "description": "Cookie values to include in the request.",
+          "default": null
+        },
+        {
+          "name": "auth",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Authentication class to use for this request, overriding client-level auth.",
+          "default": "Client default configuration"
+        },
+        {
+          "name": "follow_redirects",
+          "type": "bool",
+          "required": false,
+          "location": "argument",
+          "description": "Whether to follow redirects for this request, overriding client-level setting.",
+          "default": "Client default configuration"
+        },
+        {
+          "name": "timeout",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "The timeout configuration for this request, overriding client-level timeout.",
+          "default": "Client default configuration"
+        },
+        {
+          "name": "extensions",
+          "type": "dict",
+          "required": false,
+          "location": "argument",
+          "description": "A dictionary of extensions to modify request behavior.",
+          "default": null
+        }
+      ],
+      "returns": "httpx.Response"
+    },
+    {
+      "name": "httpx.Client.patch",
+      "description": "Send a `PATCH` request.",
+      "method": "FUNCTION",
+      "path": "httpx._client.Client.patch",
+      "params": [
+        {
+          "name": "url",
+          "type": "string",
+          "required": true,
+          "location": "argument",
+          "description": "The URL for the request, as a string or a `httpx.URL` object.",
+          "default": null
+        },
+        {
+          "name": "content",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "The request body as bytes.",
+          "default": null
+        },
+        {
+          "name": "data",
+          "type": "dict | list",
+          "required": false,
+          "location": "argument",
+          "description": "The request body as form data (dict or list of tuples).",
+          "default": null
+        },
+        {
+          "name": "files",
+          "type": "dict | list",
+          "required": false,
+          "location": "argument",
+          "description": "Files to upload (dict or list of tuples).",
+          "default": null
+        },
+        {
+          "name": "json",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "The request body as JSON.",
+          "default": null
+        },
+        {
+          "name": "params",
+          "type": "string | dict | list",
+          "required": false,
+          "location": "argument",
+          "description": "Query parameters to include in the URL.",
+          "default": null
+        },
+        {
+          "name": "headers",
+          "type": "dict | list",
+          "required": false,
+          "location": "argument",
+          "description": "HTTP headers to include in the request.",
+          "default": null
+        },
+        {
+          "name": "cookies",
+          "type": "dict | list",
+          "required": false,
+          "location": "argument",
+          "description": "Cookie values to include in the request.",
+          "default": null
+        },
+        {
+          "name": "auth",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "Authentication class to use for this request, overriding client-level auth.",
+          "default": "Client default configuration"
+        },
+        {
+          "name": "follow_redirects",
+          "type": "bool",
+          "required": false,
+          "location": "argument",
+          "description": "Whether to follow redirects for this request, overriding client-level setting.",
+          "default": "Client default configuration"
+        },
+        {
+          "name": "timeout",
+          "type": "object",
+          "required": false,
+          "location": "argument",
+          "description": "The timeout configuration for this request, overriding client-level timeout.",
+          "default": "Client default configuration"
+        },
+        {
+          "name": "extensions",
+          "type": "dict",
+          "required": false,
+          "location": "argument",
+          "description": "A dictionary of extensions to modify request behavior.",
+          "default": null
+        }
+      ],
+      "returns": "httpx.Response"
+    }
+  ]
+}

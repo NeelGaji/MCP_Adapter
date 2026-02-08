@@ -1,0 +1,236 @@
+{
+  "source": "test_application/sample_api_docs.md",
+  "parser": "gemini",
+  "api_info": {
+    "title": "Example REST API Documentation",
+    "version": "",
+    "description": "This API allows you to manage a todo list application.",
+    "base_url": ""
+  },
+  "tools": [
+    {
+      "name": "create_todo",
+      "description": "Creates a new todo item.",
+      "method": "POST",
+      "path": "/todos",
+      "params": [
+        {
+          "name": "X-API-Key",
+          "type": "string",
+          "required": true,
+          "location": "header",
+          "description": "API key for authentication."
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true,
+          "location": "body",
+          "description": "The title of the todo."
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "location": "body",
+          "description": "Detailed description."
+        },
+        {
+          "name": "due_date",
+          "type": "string",
+          "required": false,
+          "location": "body",
+          "description": "ISO 8601 date format."
+        },
+        {
+          "name": "priority",
+          "type": "string",
+          "required": false,
+          "location": "body",
+          "description": "One of \"low\", \"medium\", \"high\" (default: \"medium\")."
+        }
+      ]
+    },
+    {
+      "name": "get_all_todos",
+      "description": "Retrieves all todos for the authenticated user.",
+      "method": "GET",
+      "path": "/todos",
+      "params": [
+        {
+          "name": "X-API-Key",
+          "type": "string",
+          "required": true,
+          "location": "header",
+          "description": "API key for authentication."
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "required": false,
+          "location": "query",
+          "description": "Filter by status - \"pending\", \"completed\", \"all\"."
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "location": "query",
+          "description": "Max items to return (default 20, max 100)."
+        },
+        {
+          "name": "offset",
+          "type": "integer",
+          "required": false,
+          "location": "query",
+          "description": "Pagination offset."
+        }
+      ]
+    },
+    {
+      "name": "get_single_todo",
+      "description": "Retrieves a single todo item by ID. Returns 404 if not found.",
+      "method": "GET",
+      "path": "/todos/{id}",
+      "params": [
+        {
+          "name": "X-API-Key",
+          "type": "string",
+          "required": true,
+          "location": "header",
+          "description": "API key for authentication."
+        },
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "location": "path",
+          "description": "The todo ID."
+        }
+      ]
+    },
+    {
+      "name": "update_todo",
+      "description": "Updates an existing todo.",
+      "method": "PUT",
+      "path": "/todos/{id}",
+      "params": [
+        {
+          "name": "X-API-Key",
+          "type": "string",
+          "required": true,
+          "location": "header",
+          "description": "API key for authentication."
+        },
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "location": "path",
+          "description": "The todo ID."
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false,
+          "location": "body",
+          "description": "The title of the todo."
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "location": "body",
+          "description": "Detailed description."
+        },
+        {
+          "name": "due_date",
+          "type": "string",
+          "required": false,
+          "location": "body",
+          "description": "ISO 8601 date format."
+        },
+        {
+          "name": "priority",
+          "type": "string",
+          "required": false,
+          "location": "body",
+          "description": "One of \"low\", \"medium\", \"high\"."
+        }
+      ]
+    },
+    {
+      "name": "delete_todo",
+      "description": "Permanently deletes a todo.",
+      "method": "DELETE",
+      "path": "/todos/{id}",
+      "params": [
+        {
+          "name": "X-API-Key",
+          "type": "string",
+          "required": true,
+          "location": "header",
+          "description": "API key for authentication."
+        },
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "location": "path",
+          "description": "The todo ID."
+        }
+      ]
+    },
+    {
+      "name": "mark_todo_complete",
+      "description": "Marks a todo as completed. Sets `completed_at` timestamp.",
+      "method": "PATCH",
+      "path": "/todos/{id}/complete",
+      "params": [
+        {
+          "name": "X-API-Key",
+          "type": "string",
+          "required": true,
+          "location": "header",
+          "description": "API key for authentication."
+        },
+        {
+          "name": "id",
+          "type": "integer",
+          "required": true,
+          "location": "path",
+          "description": "The todo ID."
+        }
+      ]
+    },
+    {
+      "name": "search_todos",
+      "description": "Full-text search across todos.",
+      "method": "GET",
+      "path": "/search",
+      "params": [
+        {
+          "name": "X-API-Key",
+          "type": "string",
+          "required": true,
+          "location": "header",
+          "description": "API key for authentication."
+        },
+        {
+          "name": "q",
+          "type": "string",
+          "required": true,
+          "location": "query",
+          "description": "Search query."
+        },
+        {
+          "name": "fields",
+          "type": "string",
+          "required": false,
+          "location": "query",
+          "description": "Comma-separated fields to search: \"title\", \"description\"."
+        }
+      ]
+    }
+  ]
+}
