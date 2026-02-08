@@ -1,0 +1,11 @@
+{
+  "source": "https://devdocs.io/fastapi/",
+  "parser": "gemini",
+  "api_info": {
+    "title": "FastAPI",
+    "version": "0.115.6",
+    "description": "API documentation for the FastAPI framework, version 0.115.6. This HTML provides the structure for a documentation viewer.",
+    "base_url": ""
+  },
+  "tools": []
+}
