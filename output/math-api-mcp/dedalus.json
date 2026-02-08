@@ -1,0 +1,44 @@
+{
+  "server_name": "math-api",
+  "api_title": "Basic Math API",
+  "api_version": "1.0.0",
+  "base_url": "http://127.0.0.1:8001",
+  "env_prefix": "BASIC_MATH_API",
+  "tool_count": 5,
+  "env_vars": {
+    "BASIC_MATH_API_BASE_URL": "http://127.0.0.1:8001",
+    "BASIC_MATH_API_API_KEY": "your-api-key-here"
+  },
+  "tools": [
+    {
+      "name": "addnumbers",
+      "safety": "write",
+      "method": "POST",
+      "path": "/add"
+    },
+    {
+      "name": "dividenumbers",
+      "safety": "write",
+      "method": "POST",
+      "path": "/divide"
+    },
+    {
+      "name": "healthcheck",
+      "safety": "read",
+      "method": "GET",
+      "path": "/health"
+    },
+    {
+      "name": "multiplynumbers",
+      "safety": "write",
+      "method": "POST",
+      "path": "/multiply"
+    },
+    {
+      "name": "subtractnumbers",
+      "safety": "write",
+      "method": "POST",
+      "path": "/subtract"
+    }
+  ]
+}

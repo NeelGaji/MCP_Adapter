@@ -1,8 +1,9 @@
 """CLI entry point for the MCP Adapter Generator.
 
 Usage:
-    python -m mcp_adapter generate --spec path/to/openapi.yaml --output ./output
-    python -m mcp_adapter generate --url http://host/openapi.json --output ./output --use-k2
+    python -m mcp_adapter generate --url http://host/openapi.json -o ./output --name my-api
+    python -m mcp_adapter generate --url http://host/openapi.json -o ./output --name my-api --deploy
+    python -m mcp_adapter generate --spec path/to/openapi.yaml -o ./output
     python -m mcp_adapter inspect  --spec path/to/openapi.yaml
 """
 
@@ -17,7 +18,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-from .codegen import generate
+from .agentic_codegen import generate as agentic_generate
+from .deploy import deploy as deploy_to_github
 from .ingest import ingest
 from .logger import setup_logging, get_logger
 from .mine import mine_tools
@@ -65,7 +67,7 @@ def cli(verbose: bool):
     "--use-k2",
     is_flag=True,
     default=False,
-    help="Use Kimi K2 AI to enhance tool names, descriptions, and schemas.",
+    help="Use AI to enhance tool names, descriptions, and schemas.",
 )
 @click.option(
     "--block-destructive",
@@ -89,6 +91,17 @@ def cli(verbose: bool):
     default=None,
     help="Comma-separated list of tool names to exclude.",
 )
+@click.option(
+    "--deploy",
+    is_flag=True,
+    default=False,
+    help="Auto-deploy: push to GitHub + open Dedalus dashboard.",
+)
+@click.option(
+    "--github-org",
+    default=None,
+    help="GitHub org to create the repo under (default: personal account).",
+)
 def generate_cmd(
     spec: str | None,
     url: str | None,
@@ -99,6 +112,8 @@ def generate_cmd(
     max_tools: int,
     allowlist: str | None,
     denylist: str | None,
+    deploy: bool,
+    github_org: str | None,
 ):
     """Generate an MCP server from an API specification."""
     logger = get_logger()
@@ -115,6 +130,9 @@ def generate_cmd(
     logger.info("Source: %s", source)
     logger.info("Output: %s", output)
     logger.info("K2 reasoning: %s", "enabled" if use_k2 else "disabled")
+    logger.info("Code generation: agentic (DeepSeek-V3 via Featherless)")
+    if deploy:
+        logger.info("Deploy: GitHub + Dedalus (auto)")
     logger.info("")
 
     # ── Stage 1: Ingestion ────────────────────────────────────────────
@@ -142,8 +160,23 @@ def generate_cmd(
     )
     tools = apply_safety(tools, policy)
 
-    # ── Stage 5: Code Generation ──────────────────────────────────────
-    result = generate(api_spec, tools, server_name=name, output_dir=output)
+    # ── Stage 5: Code Generation (DeepSeek-V3 via Featherless) ────────
+    result = agentic_generate(api_spec, tools, server_name=name, output_dir=output)
+
+    # ── Stage 6: Deploy (optional) ─────────────────────────────────────
+    deploy_info = None
+    if deploy:
+        try:
+            repo_name = result.server_name
+            deploy_info = deploy_to_github(
+                output_dir=output,
+                repo_name=repo_name,
+                description=f"Auto-generated MCP server for {api_spec.title}",
+                org=github_org,
+            )
+        except Exception as e:
+            logger.error("Deploy failed: %s", e)
+            click.echo(f"\n⚠️  Deploy failed: {e}", err=True)
 
     # ── Summary ───────────────────────────────────────────────────────
     logger.info("")
@@ -152,12 +185,32 @@ def generate_cmd(
     logger.info("=" * 60)
     logger.info("Server: %s (%d tools)", result.server_name, result.tool_count)
     logger.info("Output: %s", result.output_dir)
+    if deploy_info:
+        logger.info("GitHub: %s", deploy_info["repo_url"])
     logger.info("")
-    click.echo(f"\n✅ Done! To run your server:")
-    click.echo(f"   cd {output}")
-    click.echo(f"   pip install -r requirements.txt")
-    click.echo(f"   cp .env.example .env  # fill in your API key")
-    click.echo(f"   python server.py")
+
+    if deploy_info:
+        click.echo(f"\n✅ Done! Pushed to GitHub and opened Dedalus dashboard.")
+        click.echo(f"")
+        click.echo(f"   GitHub:    {deploy_info['repo_url']}")
+        click.echo(f"   Dashboard: {deploy_info['dashboard_url']}")
+        click.echo(f"")
+        click.echo(f"   In the Dedalus dashboard:")
+        click.echo(f"   1. Click 'Add Server' → connect repo '{deploy_info['repo_full_name']}'")
+        click.echo(f"   2. Set these env vars (copy-paste):")
+        env_vars = deploy_info.get("env_vars", {})
+        for key, val in env_vars.items():
+            click.echo(f"        {key} = {val}")
+        click.echo(f"   3. Click 'Deploy'")
+        click.echo(f"")
+        click.echo(f"   After deploy, use in any AI agent:")
+        click.echo(f"      mcp_servers=[\"{deploy_info['repo_full_name']}\"]")
+    else:
+        click.echo(f"\n✅ Done! To run your server:")
+        click.echo(f"   cd {output}")
+        click.echo(f"   pip install -r requirements.txt")
+        click.echo(f"   cp .env.example .env  # fill in your API key")
+        click.echo(f"   python server.py")
 
 
 # ── inspect ─────────────────────────────────────────────────────────────────
