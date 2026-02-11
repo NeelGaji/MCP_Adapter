@@ -113,8 +113,8 @@ export function AdapterSidebar() {
             SR
           </div>
           <div className="min-w-0">
-            <p className="text-xs font-semibold text-foreground truncate">Sudharshan</p>
-            <p className="text-[10px] text-muted-foreground truncate">exploring-curiosity</p>
+            <p className="text-xs font-semibold text-foreground truncate">Neel</p>
+            <p className="text-[10px] text-muted-foreground truncate">Juggernaut</p>
           </div>
         </div>
       </div>

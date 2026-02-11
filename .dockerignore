@@ -1,0 +1,15 @@
+frontend/
+venv/
+.git/
+.gitignore
+__pycache__/
+*.pyc
+.env
+.sessions/
+.credits/
+output/
+examples/
+test_application/
+*.md
+*.pkl
+.DS_Store

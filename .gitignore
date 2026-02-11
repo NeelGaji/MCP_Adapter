@@ -2,3 +2,5 @@
 .sessions/
 output/
 venv/   
+__pycache__/
+devfest_submission.md

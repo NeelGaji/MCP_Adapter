@@ -363,10 +363,16 @@ def parse_openapi(source: str | Path, raw_data: dict | None = None) -> APISpec:
                 )
             )
 
+    # Handle description that may be a $ref dict instead of string
+    raw_description = info.get("description", "")
+    if isinstance(raw_description, dict):
+        # If it's a $ref, use the ref path as description or empty string
+        raw_description = raw_description.get("$ref", "") if "$ref" in raw_description else str(raw_description)
+    
     return APISpec(
         title=info.get("title", "Untitled API"),
         version=info.get("version", ""),
-        description=info.get("description", ""),
+        description=raw_description,
         base_url=base_url,
         auth_schemes=auth_schemes,
         endpoints=endpoints,
