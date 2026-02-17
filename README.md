@@ -1,6 +1,7 @@
 # MYME — Make Your MCP Easy
 
 Youtube tutorial: [Youtube Tutorial](https://youtu.be/6wxYa0HstmA)
+Devpost - https://devpost.com/software/myme-make-your-mcp-easy
 
 **One command** to turn any Swagger/OpenAPI URL into a deployed MCP server.
 
